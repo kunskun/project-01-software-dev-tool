@@ -3,7 +3,7 @@
 ## Commit Message
 Type of uses : 
 ```
-<commit message> ...Refer to...
+<commit message> ...Refer To...
 ```
 - `<Feat>` - Use when some feature is created.
 - `<Fix>` - Use when some problem or bug is resolved.
