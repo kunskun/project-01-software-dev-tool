@@ -1,9 +1,9 @@
 # Project Software Dev Tools
 
 ## Commit Message
-รูปแบบการใช้งาน : 
+Type of uses : 
 ```
-<commit message> ...อ้างอิงถึง...
+<commit message> ...Refer to...
 ```
 - `<Feat>` - Use when some feature is created.
 - `<Fix>` - Use when some problem or bug is resolved.
@@ -13,7 +13,7 @@
 - `<Upl>` - Use when some file is uploaded to Git except coding.
 
 ## Branch
-- `main` - when all the work has been completed.
-- `staging` - waiting for another teammate to approve and testing.
-- `feature` - build or edit some feature  
-
+- `main` - When staging features that ready to be deployed on the production.
+- `staging` - A develop branch for merging each feature branch of teammates.
+- `{developer name}/feature/{feature name}` - For develop new features. Eg: john/feature/a, dang/feature/b
+- `{developer name}/debug/{feature name}` - For the feature that have to test something new or resolve the bug.
