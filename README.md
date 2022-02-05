@@ -1,5 +1,19 @@
 # Project Software Dev Tools
 
 ## Commit Message
-- `<Feature>` - commit message... and refer to... | Use when some function or feature is created.
-- `<Fix>` - commit message... and refer to... | Use when some problem or bug is resolved.
+Type of uses : 
+```
+<commit message> ...Refer To...
+```
+- `<Feat>` - Use when some feature is created.
+- `<Fix>` - Use when some problem or bug is resolved.
+- `<Add>` - Use when add some function.
+- `<Upd>` - Use when want to improve some function.
+- `<Del>` - Use when some function or feature is deleted.
+- `<Upl>` - Use when some file is uploaded to Git except coding.
+
+## Branch
+- `main` - When staging features that ready to be deployed on the production.
+- `staging` - A develop branch for merging each feature branch of teammates.
+- `{developer name}/feature/{feature name}` - For develop new features, eg: john/feature/a or dang/feature/b.
+- `{developer name}/debug/{feature name}` - For the feature that have to test something new or resolve the bug.
