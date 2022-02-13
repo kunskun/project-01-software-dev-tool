@@ -1,4 +1,5 @@
 import { InputType, Field } from '@nestjs/graphql';
+import { ObjectId } from 'mongoose';
 import { ServiceType } from '../../service/entities/service.entity';
 
 @InputType()
@@ -9,5 +10,6 @@ export class CreateFamilyInput {
   @Field()
   readonly familyCode: string
 
-  readonly service: ServiceType
+  @Field()
+  readonly service: string
 }
