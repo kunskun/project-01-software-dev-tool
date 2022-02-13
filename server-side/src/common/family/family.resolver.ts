@@ -9,12 +9,12 @@ export class FamilyResolver {
   constructor(private readonly familyService: FamilyService) { }
 
   @Mutation(() => FamilyType)
-  createFamily(@Args('createFamilyInput') createFamilyInput: CreateFamilyInput) {
-    return this.familyService.create(createFamilyInput);
+  createFamily(@Args('payload') payload: CreateFamilyInput): Promise<FamilyType> {
+    return this.familyService.create(payload);
   }
 
-  @Query(() => [FamilyType], { name: 'family' })
-  async findAll(): Promise<FamilyType[]> {
+  @Query(() => [FamilyType])
+  async families(): Promise<FamilyType[]> {
     return this.familyService.findAll();
   }
 
