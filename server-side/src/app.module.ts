@@ -6,11 +6,11 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppService } from './app.service';
 import { dbService } from './config/database/database.service';
 import { MemberModule } from './common/member/member.module';
-import { FamilyModule } from './common/family/family.module';
 import { ServiceModule } from './common/service/service.module';
 import { PaymentModule } from './common/payment/payment.module';
 import { BookBankModule } from './common/book-bank/book-bank.module';
 import { RoleModule } from './common/role/role.module';
+import { FamilyModule } from './common/family/family.module';
 
 @Module({
   imports: [
