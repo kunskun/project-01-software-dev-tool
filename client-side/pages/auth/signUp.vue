@@ -1,0 +1,9 @@
+<template>
+  <v-sheet>
+    <v-row>
+      <v-col>
+        <h1>SIGNUP</h1>
+      </v-col>
+    </v-row>
+  </v-sheet>
+</template>
