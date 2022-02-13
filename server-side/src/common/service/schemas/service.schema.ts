@@ -6,7 +6,6 @@ export type ServiceDocument = Service & mongoose.Document
 
 @Schema({ collection: 'service' })
 export class Service {
-  servicePeriod: Date
 
   @Prop({ type: String, required: true })
   serviceName: string
@@ -16,6 +15,9 @@ export class Service {
 
   @Prop({ type: Number, required: true })
   serviceMaxMember: number
+
+  @Prop({ type: Date, required: true })
+  servicePeriod: Date
 }
 
 export const ServiceSchema = SchemaFactory.createForClass(Service)

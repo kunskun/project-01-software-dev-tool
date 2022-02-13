@@ -10,5 +10,5 @@ export class FamilyType {
   @Field()
   readonly familyCode: string
   @Field(() => ServiceType)
-  readonly service: ServiceType
+  readonly service?: ServiceType
 }
