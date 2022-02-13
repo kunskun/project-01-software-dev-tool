@@ -8,9 +8,9 @@ export class FamilyResolver {
 
   constructor(private readonly familyService: FamilyService) { }
 
-  @Mutation(() => FamilyType)
-  createFamily(@Args('payload') payload: CreateFamilyInput): Promise<FamilyType> {
-    return this.familyService.create(payload);
+  @Mutation(returns => FamilyType)
+  createFamily(@Args('input') input: CreateFamilyInput): Promise<FamilyType> {
+    return this.familyService.create(input);
   }
 
   @Query(() => [FamilyType])
