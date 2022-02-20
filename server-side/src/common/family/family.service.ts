@@ -19,8 +19,8 @@ export class FamilyService {
     return await this.familyModel.find().populate('service').exec()
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} family`;
+  async findOne(id: string): Promise<FamilyType[]> {
+    return await this.familyModel.findOne({ _id: id })
   }
 
   remove(id: number) {
