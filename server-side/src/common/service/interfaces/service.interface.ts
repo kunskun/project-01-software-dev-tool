@@ -5,4 +5,5 @@ export interface Service extends Document {
   readonly serviceAmount: number
   readonly servicePeriod: string
   readonly serviceMaxMember: number
+  readonly serviceImage: string
 }
