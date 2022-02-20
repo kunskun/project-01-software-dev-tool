@@ -161,7 +161,7 @@
               </v-col>
               <v-col cols="8">
                 {{ member.name }}
-                <span v-show="member.role === 'Host'"> (HOST)</span>
+                <span v-show="member.role === 'host'"> (HOST)</span>
               </v-col>
             </v-row>
           </v-col>
@@ -212,7 +212,7 @@
             <v-col cols="2"/>
             <v-col cols="1">
               <v-btn
-                v-show="member.role !== 'Host'"
+                v-show="member.role !== 'host'"
                 style="width: 100%"
                 color="error"
                 @click="kickMemberModal(member)"
@@ -267,7 +267,7 @@ export default {
       {
         id: '1',
         name: 'แพรไหม',
-        role: 'Host',
+        role: 'host',
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'paid',
@@ -276,7 +276,7 @@ export default {
       {
         id: '2',
         name: 'อนุชา',
-        role: 'Member',
+        role: 'member',
         email: 'anucha@gmail.com',
         phone: '0896547321',
         status: 'waiting',
@@ -285,7 +285,7 @@ export default {
       {
         id: '3',
         name: 'แพรไหม',
-        role: 'Member',
+        role: 'member',
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'waiting',
@@ -294,7 +294,7 @@ export default {
       {
         id: '4',
         name: 'อนุชา',
-        role: 'Member',
+        role: 'member',
         email: 'anucha@gmail.com',
         phone: '0896547321',
         status: 'not paid',
@@ -303,7 +303,7 @@ export default {
       {
         id: '5',
         name: 'แพรไหม',
-        role: 'Member',
+        role: 'member',
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'paid',
@@ -312,7 +312,7 @@ export default {
       {
         id: '6',
         name: 'อนุชา',
-        role: 'Member',
+        role: 'member',
         email: 'anucha@gmail.com',
         phone: '0896547321',
         status: 'not paid',
