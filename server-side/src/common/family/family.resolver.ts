@@ -19,7 +19,7 @@ export class FamilyResolver {
   }
 
   @Query(() => FamilyType, { name: 'family' })
-  findOne(@Args('id') id: string) {
+  async findOne(@Args('id') id: string) {
     return this.familyService.findOne(id);
   }
 
