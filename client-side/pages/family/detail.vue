@@ -29,15 +29,15 @@
       </v-menu>
     </v-app-bar>
     <v-row class="justify-center" style="margin-top: 1%">
-      <v-card style="padding: 0px 20px 20px 20px">
+      <v-card style="padding: 10px 20px 20px 20px">
         <v-row align="center" justify="center">
           <v-col cols="2">
-            <v-img style="width: 100%" :src="serviceImage" />
+            <v-img style="width: 90%" :src="family && family.service.serviceImage" />
           </v-col>
           <v-col cols="6">
             <v-row>
-              <v-col style="">
-                <v-card-text> Youtube Premium </v-card-text>
+              <v-col cols="8">
+                <v-card-text> {{ family && family.service.serviceName }} </v-card-text>
                 <v-card-text
                   v-if="!isEdit"
                   style="font-size: 2rem; font-weight: bold;"
@@ -47,55 +47,105 @@
                 <v-text-field
                   v-else
                   v-model="editFamiltName"
-                  :placeholder="familyName"
+                  :placeholder="family && family.familyName"
                   filled
                 />
               </v-col>
-              <v-col v-show="!isEdit">
-                <v-card-text> Progress Bar </v-card-text>
+              <v-col v-show="!isEdit" cols="4">
+                <v-progress-circular
+                  color="pink dark-2"
+                  :rotate="90"
+                  :size="(family && family.service.serviceMaxMember)*20"
+                  :width="15"
+                  :value="value"
+                >
+                  {{ value/20 }} / {{ family.service.serviceMaxMember }}
+                </v-progress-circular>
               </v-col>
             </v-row>
           </v-col>
-          <v-col v-if="!isEdit" cols="2">
-            <div
-              style="
-                background-color:#C5C5C5;
-                border-radius: 25px;
-                text-align: center;
-                height: 80px;
-                padding-top: 2%;
-                font-weight: bold;
-                font-size: 1.5em"
-            >
-              {{ family && family.familyCode }} <br>
-              <v-btn
-                color="black"
-                class="title"
+          <template v-if="viewAs === 'host'">
+            <v-col v-if="!isEdit" cols="2">
+              <div
                 style="
-                  border-radius: 15px;
-                  width: 100%;
-                  height: 40px;
-                  margin-top: 2%"
-                @click="copyCode(family && family.familyCode)"
+                  background-color:#C5C5C5;
+                  border-radius: 25px;
+                  text-align: center;
+                  height: 80px;
+                  padding-top: 2%;
+                  font-weight: bold;
+                  font-size: 1.5em"
               >
-                Copy Code
-              </v-btn>
-            </div>
-          </v-col>
-          <v-col v-else cols="2" />
-          <v-col cols="2">
-            <template v-if="!isEdit">
+                {{ family && family.familyCode }} <br>
+                <v-btn
+                  color="black"
+                  class="title"
+                  style="
+                    border-radius: 15px;
+                    width: 100%;
+                    height: 40px;
+                    margin-top: 2%"
+                  @click="copyCode(family && family.familyCode)"
+                >
+                  Copy Code
+                </v-btn>
+              </div>
+            </v-col>
+            <v-col v-else cols="2" />
+            <v-col cols="2">
+              <template v-if="!isEdit">
+                <v-btn
+                  color="purple"
+                  class="title"
+                  style="
+                    border-radius: 15px;
+                    width: 100%;
+                    height: 40px;
+                    margin: 2%"
+                  @click="toggleEditAndSave"
+                >
+                  Edit
+                </v-btn>
+                <v-btn
+                  color="black"
+                  class="title"
+                  style="
+                    border-radius: 15px;
+                    width: 100%;
+                    height: 40px;
+                    margin: 2%"
+                >
+                  History
+                </v-btn>
+              </template>
               <v-btn
-                color="purple"
+                v-else
+                color="success"
                 class="title"
                 style="
                   border-radius: 15px;
                   width: 100%;
                   height: 40px;
                   margin: 2%"
-                @click="toggleEditAneSave"
+                @click="toggleEditAndSave"
               >
-                Edit
+                Done
+              </v-btn>
+            </v-col>
+          </template>
+          <template v-else-if="viewAs === 'member'">
+            <v-col cols="2" />
+            <v-col cols="2">
+              <v-btn
+                color="pink"
+                class="title"
+                style="
+                  border-radius: 15px;
+                  width: 100%;
+                  height: 40px;
+                  margin: 2%"
+              >
+                Pay bill
               </v-btn>
               <v-btn
                 color="black"
@@ -108,34 +158,29 @@
               >
                 History
               </v-btn>
-            </template>
-            <v-btn
-              v-else
-              color="success"
-              class="title"
-              style="
-                border-radius: 15px;
-                width: 100%;
-                height: 40px;
-                margin: 2%"
-              @click="toggleEditAneSave"
-            >
-              Done
-            </v-btn>
-          </v-col>
+            </v-col>
+          </template>
         </v-row>
         <v-row>
           <v-col cols="3">
             <span> ราคา </span><br>
-            <span style="font-size: 2rem;"> 299 บาท </span>
+            <span style="font-size: 2rem;">
+              {{ family && family.service.serviceAmount }} บาท
+            </span>
           </v-col>
           <v-col cols="3">
             <span> ราคา/คน </span><br>
-            <span style="font-size: 2rem;"> 49.83 บาท </span>
+            <!-- count member ex. mockup have 6 member to divide -->
+            <span style="font-size: 2rem;">
+              {{ ((family && family.service.serviceAmount)/(6)).toFixed(2) }} บาท
+            </span>
           </v-col>
           <v-col cols="3">
             <span> จำนวนคนสูงสุด </span><br>
-            <span style="font-size: 2rem;"> 6/6 คน </span>
+            <!-- count member ex. mockup have 6 member to count -->
+            <span style="font-size: 2rem;">
+              6/{{ family && family.service.serviceMaxMember }} คน
+            </span>
           </v-col>
           <v-col cols="3" />
         </v-row>
@@ -172,7 +217,7 @@
             {{ member.phone }}
           </v-col>
           <template v-if="!isEdit">
-            <v-col cols="2">
+            <v-col v-if="viewAs === 'host'" cols="2">
               <v-btn
                 v-if="member.status === 'waiting'"
                 depressed
@@ -184,6 +229,7 @@
                 Approve
               </v-btn>
             </v-col>
+            <v-col v-else-if="viewAs === 'member'" cols="2" />
             <v-col cols="1">
               <v-btn
                 v-if="member.status === 'paid'"
@@ -208,7 +254,7 @@
               </v-btn>
             </v-col>
           </template>
-          <template v-else>
+          <template v-else-if="isEdit">
             <v-col cols="2"/>
             <v-col cols="1">
               <v-btn
@@ -258,6 +304,8 @@ export default {
     familyName: 'Bruno Family',
     editFamiltName: '',
     kickModal: false,
+    viewAs: 'host',
+    value: 40, // 2*20
     tmp: {},
     rules: [
       value => !!value || 'Required.',
@@ -326,13 +374,14 @@ export default {
         return member.id !== id
       })
       this.kickModal = false
-      // console.log(this.members)
     },
-    toggleEditAneSave () {
+    toggleEditAndSave () {
       this.isEdit = !this.isEdit
+      // แก้ตอน save ลง DB ให้หน่อย
       if (this.editFamiltName !== this.familyName && this.editFamiltName) {
         this.familyName = this.editFamiltName
       }
+      // make sure ว่าปิด dialog แน่นอนตอนปิด edit
       this.kickModal = false
     },
     kickMemberModal (member) {
@@ -345,9 +394,16 @@ export default {
   },
   apollo: {
     family: gql`query {
-      family(id: "6207ffe9c038d2a224c601e8"){
+      family(id: "62094f951d5751ba7b8db601"){
         familyName
         familyCode
+        service{
+          serviceName
+          serviceAmount
+          servicePeriod
+          serviceMaxMember
+          serviceImage
+        }
       }
     }`
   }
@@ -357,5 +413,8 @@ export default {
   .title{
     color: white;
     font-weight: bold;
+  }
+  .v-progress-circular {
+    margin: 1rem;
   }
 </style>
