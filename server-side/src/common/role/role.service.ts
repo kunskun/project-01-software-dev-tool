@@ -20,7 +20,7 @@ export class RoleService {
     }
 
     async findById(id: string): Promise<RoleType> {
-        return await this.roleModel.findById({ _id: id })
+        return await this.roleModel.findById(id)
     }
 
     async findByName(name: string): Promise<RoleType[]> {

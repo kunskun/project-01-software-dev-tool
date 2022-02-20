@@ -20,7 +20,7 @@ export class RoleResolver {
     }
 
     @Query(returns => RoleType, { name: 'role' })
-    async findRoleById(@Args('id', { type: () => String } ) id:string): Promise<RoleType> {
+    async findRoleById(@Args('id') id:string): Promise<RoleType> {
         return this.roleService.findById(id)
     }
 
