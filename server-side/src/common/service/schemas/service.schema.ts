@@ -18,6 +18,9 @@ export class Service {
 
   @Prop({ type: Date, required: true })
   servicePeriod: Date
+
+  @Prop({ type: String, required: true })
+  serviceImage: string
 }
 
 export const ServiceSchema = SchemaFactory.createForClass(Service)

@@ -24,22 +24,4 @@ export class RoleResolver {
         return this.roleService.findById(id)
     }
 
-    @Mutation(returns => RoleType)
-    async createRole(@Args('input') input: RoleCreateInput): Promise<RoleType> {
-        return this.roleService.create(input)
-    }
-
-    @Mutation(returns => RoleType)
-    async updateRole(
-        @Args('id') id: string,
-        @Args('input') input:RoleCreateInput
-    ) {
-        return this.roleService.update(id, input as Role)
-    }
-
-    @Mutation(returns => RoleType)
-    async deleteRole(@Args('id') id: string) {
-        return this.roleService.delete(id)
-    }
-
 }
