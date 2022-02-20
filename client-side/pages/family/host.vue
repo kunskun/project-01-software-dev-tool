@@ -42,7 +42,7 @@
                   v-if="!isEdit"
                   style="font-size: 2rem; font-weight: bold;"
                 >
-                  {{ familyName }}
+                  {{ family && family.familyName }}
                 </v-card-text>
                 <v-text-field
                   v-else
@@ -62,20 +62,27 @@
                 background-color:#C5C5C5;
                 border-radius: 25px;
                 text-align: center;
-                height: 80px;"
-            > BRUQ856 <br>
+                height: 80px;
+                padding-top: 2%;
+                font-weight: bold;
+                font-size: 1.5em"
+            >
+              {{ family && family.familyCode }} <br>
               <v-btn
                 color="black"
                 class="title"
                 style="
                   border-radius: 15px;
                   width: 100%;
-                  height: 35px;
-                  margin-top: 10%"
-              > Copy Code </v-btn>
+                  height: 40px;
+                  margin-top: 2%"
+                @click="copyCode(family && family.familyCode)"
+              >
+                Copy Code
+              </v-btn>
             </div>
           </v-col>
-          <v-col v-else cols="2"/>
+          <v-col v-else cols="2" />
           <v-col cols="2">
             <template v-if="!isEdit">
               <v-btn
@@ -87,7 +94,9 @@
                   height: 40px;
                   margin: 2%"
                 @click="toggleEditAneSave"
-              > Edit </v-btn>
+              >
+                Edit
+              </v-btn>
               <v-btn
                 color="black"
                 class="title"
@@ -96,7 +105,9 @@
                   width: 100%;
                   height: 40px;
                   margin: 2%"
-              > History </v-btn>
+              >
+                History
+              </v-btn>
             </template>
             <v-btn
               v-else
@@ -108,7 +119,9 @@
                 height: 40px;
                 margin: 2%"
               @click="toggleEditAneSave"
-            > Done </v-btn>
+            >
+              Done
+            </v-btn>
           </v-col>
         </v-row>
         <v-row>
@@ -127,9 +140,15 @@
           <v-col cols="3" />
         </v-row>
         <v-row>
-          <v-col cols="4" style="font-weight: bold">MEMBER</v-col>
-          <v-col cols="3" style="font-weight: bold">EMAIL</v-col>
-          <v-col cols="3" style="font-weight: bold">PHONE</v-col>
+          <v-col cols="4" style="font-weight: bold">
+            MEMBER
+          </v-col>
+          <v-col cols="3" style="font-weight: bold">
+            EMAIL
+          </v-col>
+          <v-col cols="3" style="font-weight: bold">
+            PHONE
+          </v-col>
           <v-col cols="1" />
           <v-col cols="1" />
         </v-row>
@@ -140,38 +159,53 @@
               <v-col cols="4">
                 <v-img :src="member.image" width="50px" />
               </v-col>
-              <v-col cols="8">{{ member.name }}
+              <v-col cols="8">
+                {{ member.name }}
                 <span v-show="member.role === 'Host'"> (HOST)</span>
               </v-col>
             </v-row>
           </v-col>
-          <v-col cols="3">{{member.email}}</v-col>
-          <v-col cols="2">{{member.phone}}</v-col>
+          <v-col cols="3">
+            {{ member.email }}
+          </v-col>
+          <v-col cols="2">
+            {{ member.phone }}
+          </v-col>
           <template v-if="!isEdit">
             <v-col cols="2">
               <v-btn
                 v-if="member.status === 'waiting'"
                 depressed
                 color="warning"
-              > Approve </v-btn>
-              <v-btn v-else depressed disabled> Approve </v-btn>
+              >
+                Approve
+              </v-btn>
+              <v-btn v-else depressed disabled>
+                Approve
+              </v-btn>
             </v-col>
             <v-col cols="1">
               <v-btn
                 v-if="member.status === 'paid'"
                 style="width: 100%"
                 color="success"
-              > Paid </v-btn>
+              >
+                Paid
+              </v-btn>
               <v-btn
                 v-if="member.status === 'waiting'"
                 style="width: 100%"
                 color="warning"
-              > Waiting </v-btn>
+              >
+                Waiting
+              </v-btn>
               <v-btn
                 v-if="member.status === 'not paid'"
                 style="width: 100%"
                 color="error"
-              > Not Paid </v-btn>
+              >
+                Not Paid
+              </v-btn>
             </v-col>
           </template>
           <template v-else>
@@ -214,6 +248,9 @@
   </div>
 </template>
 <script>
+// eslint-disable-next-line import/no-named-as-default
+import gql from 'graphql-tag'
+
 export default {
   data: () => ({
     isEdit: false,
@@ -301,7 +338,18 @@ export default {
     kickMemberModal (member) {
       this.tmp = member
       this.kickModal = true
+    },
+    copyCode (code) {
+      navigator.clipboard.writeText(code)
     }
+  },
+  apollo: {
+    family: gql`query {
+      family(id: "6207ffe9c038d2a224c601e8"){
+        familyName
+        familyCode
+      }
+    }`
   }
 }
 </script>
