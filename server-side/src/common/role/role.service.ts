@@ -10,11 +10,6 @@ export class RoleService {
 
     constructor(@InjectModel('role') private roleModel: Model<Role>) { }
 
-    async create(createRoleDto: RoleCreateInput): Promise<RoleType> {
-        const createRole = new this.roleModel(createRoleDto)
-        return await createRole.save()
-    }
-
     async findAll(): Promise<RoleType[]> {
         return await this.roleModel.find().exec()
     }
@@ -25,14 +20,6 @@ export class RoleService {
 
     async findByName(name: string): Promise<RoleType[]> {
         return await this.roleModel.find({roleName: new RegExp(name, 'i') })
-    }
-
-    async delete(id: string): Promise<RoleType> {
-        return await this.roleModel.findByIdAndRemove(id);
-    }
-
-    async update(id: string, role: Role): Promise<RoleType> {
-        return await this.roleModel.findByIdAndUpdate(id, role, { new: true });
     }
 
 }

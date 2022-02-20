@@ -10,4 +10,6 @@ export class ServiceCreateInput {
   readonly servicePeriod: string
   @Field(() => Int)
   readonly serviceMaxMember: number
+  @Field()
+  readonly serviceImage: string
 }

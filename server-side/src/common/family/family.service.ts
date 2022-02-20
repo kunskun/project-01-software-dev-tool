@@ -20,7 +20,7 @@ export class FamilyService {
   }
 
   async findOne(id: string) {
-    return await this.familyModel.findById(id)
+    return await this.familyModel.findById(id).populate('service').exec()
   }
 
   remove(id: number) {
