@@ -4,14 +4,14 @@
       <v-app-bar-nav-icon />
       <v-spacer />
       <v-btn icon>
-        <v-icon color="info">
+        <v-icon>
           mdi-account-circle
         </v-icon>
       </v-btn>
       <v-menu left bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon color="warning">
+            <v-icon>
               mdi-email
             </v-icon>
           </v-btn>
@@ -29,14 +29,14 @@
       </v-menu>
     </v-app-bar>
     <v-row class="justify-center" style="margin-top: 1%">
-      <v-card style="padding: 0px 20px 20px 20px">
+      <v-card style="padding: 0px 20px 20px 20px;">
         <v-row align="center" justify="center">
           <v-col cols="2">
             <v-img style="width: 100%" src="https://cdn-icons-png.flaticon.com/512/1383/1383260.png" />
           </v-col>
           <v-col cols="6">
             <v-row>
-              <v-col style="">
+              <v-col>
                 <v-card-text> Youtube Premium </v-card-text>
                 <v-card-text style="font-size: 2rem; font-weight: bold;"> Bruno Family </v-card-text>
               </v-col>
@@ -45,13 +45,9 @@
               </v-col>
             </v-row>
           </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="2">
-            <div style="background-color:#C5C5C5; border-radius: 25px; text-align: center; height: 80px;">BRUQ856 <br>
-              <v-btn color="black" class="title" style="border-radius: 15px; width: 100%; height: 35px; margin-top: 10%">Copy Code</v-btn>
-            </div>
-          </v-col>
-          <v-col cols="2">
-            <v-btn color="purple" class="title" style="border-radius: 15px; width: 100%; height: 40px; margin: 2%">Edit</v-btn>
+            <v-btn color="pink" class="title" style="border-radius: 15px; width: 100%; height: 40px; margin: 2%">Pay bill</v-btn>
             <v-btn color="black" class="title" style="border-radius: 15px; width: 100%; height: 40px; margin: 2%">History</v-btn>
           </v-col>
         </v-row>
@@ -87,9 +83,7 @@
           </v-col>
           <v-col cols="3">preamai@gmail.com</v-col>
           <v-col cols="2">0123456789</v-col>
-          <v-col cols="2">
-            <v-btn depressed disabled> Approve </v-btn>
-          </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="1">
             <v-btn style="width: 100%" color="success"> Paid </v-btn>
           </v-col>
@@ -103,9 +97,7 @@
           </v-col>
           <v-col cols="3">anu@gmail.com</v-col>
           <v-col cols="2">0896547321</v-col>
-          <v-col cols="2">
-            <v-btn depressed color="warning"> Approve </v-btn>
-          </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="1">
             <v-btn style="width: 100%" color="warning"> Waiting </v-btn>
           </v-col>
@@ -119,9 +111,7 @@
           </v-col>
           <v-col cols="3">preamai@gmail.com</v-col>
           <v-col cols="2">0123456789</v-col>
-          <v-col cols="2">
-            <v-btn depressed disabled> Approve </v-btn>
-          </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="1">
             <v-btn style="width: 100%" color="success"> Paid </v-btn>
           </v-col>
@@ -135,9 +125,7 @@
           </v-col>
           <v-col cols="3">anu@gmail.com</v-col>
           <v-col cols="2">0896547321</v-col>
-          <v-col cols="2">
-            <v-btn depressed color="warning"> Approve </v-btn>
-          </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="1">
             <v-btn style="width: 100%" color="warning"> Waiting </v-btn>
           </v-col>
@@ -151,9 +139,7 @@
           </v-col>
           <v-col cols="3">preamai@gmail.com</v-col>
           <v-col cols="2">0123456789</v-col>
-          <v-col cols="2">
-            <v-btn depressed disabled> Approve </v-btn>
-          </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="1">
             <v-btn style="width: 100%" color="success"> Paid </v-btn>
           </v-col>
@@ -167,9 +153,7 @@
           </v-col>
           <v-col cols="3">anu@gmail.com</v-col>
           <v-col cols="2">0896547321</v-col>
-          <v-col cols="2">
-            <v-btn depressed disabled> Approve </v-btn>
-          </v-col>
+          <v-col cols="2"></v-col>
           <v-col cols="1">
             <v-btn style="width: 100%" color="error"> Not Paid </v-btn>
           </v-col>
