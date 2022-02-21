@@ -14,7 +14,12 @@
             <br>
             Service:
             <ul>
-              <li>{{ item.service.serviceName }}</li>
+              <li>
+                <v-img :src="item.service.serviceImage" width="25" />
+                <div>
+                  {{ item.service.serviceName }}
+                </div>
+              </li>
             </ul>
           </v-col>
         </v-row>
@@ -86,6 +91,7 @@ export default {
         familyName
         service {
           serviceName
+          serviceImage
         }
       }
     }`,
