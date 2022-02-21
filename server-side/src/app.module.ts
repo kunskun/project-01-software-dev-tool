@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config'
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppService } from './app.service';
-import { dbService } from './config/database/database.service';
 import { MemberModule } from './common/member/member.module';
 import { ServiceModule } from './common/service/service.module';
 import { PaymentModule } from './common/payment/payment.module';
@@ -14,11 +14,12 @@ import { FamilyModule } from './common/family/family.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       autoSchemaFile: true,
       driver: ApolloDriver
     }),
-    MongooseModule.forRoot('mongodb+srv://raatchaapol:Na-Pt-1199946713@cluster0.ounut.mongodb.net/paypai?retryWrites=false&w=majority'),
+    MongooseModule.forRoot(`mongodb+srv://${process.env.DB_USR}:${process.env.DB_PWD}@cluster0.ounut.mongodb.net/${process.env.DB_CLC}?retryWrites=false&w=majority`),
     MemberModule,
     FamilyModule,
     ServiceModule,
