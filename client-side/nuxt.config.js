@@ -53,7 +53,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://127.0.0.1:5000/graphql'
+        httpEndpoint: process.env.NODE_ENV !== 'production' ? 'http://127.0.0.1:5000/graphql' : 'https://paypai-sevices-demw7ncwba-as.a.run.app/graphql'
       }
     }
   },
