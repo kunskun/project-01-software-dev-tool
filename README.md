@@ -14,5 +14,6 @@ Type of uses :
 
 ## Branch
 - `main` - When staging features that ready to be deployed on the production.
+- `staging` - A develop branch for merging each feature branch of teammates.
 - `feature/{feature name}` - For develop new features, eg: john/feature/a or dang/feature/b.
 - `debug/{feature name}` - For the feature that have to test something new or resolve the bug.
