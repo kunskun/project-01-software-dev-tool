@@ -29,6 +29,16 @@
       </v-menu>
     </v-app-bar>
     <v-row class="justify-center" style="margin-top: 1%">
+      <v-alert
+        type="success"
+        color="green lighten-2"
+        dark
+        :value="copyAlert"
+        transition="scale-transition"
+        style="position: absolute; z-index: 1;"
+      >
+        Copy code success
+      </v-alert>
       <v-card style="padding: 10px 20px 20px 20px">
         <v-row align="center" justify="center">
           <v-col cols="2">
@@ -59,7 +69,7 @@
                   :width="15"
                   :value="value"
                 >
-                  {{ value/20 }} / {{ family.service.serviceMaxMember }}
+                  {{ value/20 }} / {{ family && family.service.serviceMaxMember }}
                 </v-progress-circular>
               </v-col>
             </v-row>
@@ -307,6 +317,7 @@ export default {
     viewAs: 'host',
     value: 40, // 2*20
     tmp: {},
+    copyAlert: false,
     rules: [
       value => !!value || 'Required.',
       value => (value && value.length >= 3) || 'Min 3 characters'
@@ -390,11 +401,15 @@ export default {
     },
     copyCode (code) {
       navigator.clipboard.writeText(code)
+      this.copyAlert = true
+      setTimeout(() => {
+        this.copyAlert = false
+      }, 2000)
     }
   },
   apollo: {
     family: gql`query {
-      family(id: "62094f951d5751ba7b8db601"){
+      family(id: "6207ffe9c038d2a224c601e8"){
         familyName
         familyCode
         service{
