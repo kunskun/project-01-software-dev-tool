@@ -59,7 +59,7 @@
                   :width="15"
                   :value="value"
                 >
-                  {{ value/20 }} / {{ family.service.serviceMaxMember }}
+                  {{ value/20 }} / {{ family && family.service.serviceMaxMember}}
                 </v-progress-circular>
               </v-col>
             </v-row>
@@ -304,7 +304,7 @@ export default {
     familyName: 'Bruno Family',
     editFamiltName: '',
     kickModal: false,
-    viewAs: 'host',
+    viewAs: 'member',
     value: 40, // 2*20
     tmp: {},
     rules: [
