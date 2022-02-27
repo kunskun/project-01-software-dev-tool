@@ -11,8 +11,8 @@
     </v-main>
 
     <v-footer app>
-      footer naja
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      Pay Pai
+      <span> &copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
