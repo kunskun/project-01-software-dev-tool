@@ -155,6 +155,7 @@
         <v-row align="center" justify="space-around">
         <v-col cols="6" align="right">
         <v-btn
+            href="/landing"
             depressed
             color="primary"
             x-large
