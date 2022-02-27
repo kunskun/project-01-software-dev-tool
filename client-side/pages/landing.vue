@@ -4,7 +4,7 @@
     style="position: absolute; min-height: 100%"
   >
     <v-row>
-      <a href="" class="d-flex justify-center align-center" style="text-decoration: none">
+      <a href="/" class="d-flex justify-center align-center" style="text-decoration: none">
         <p class="pt-4 text-h1 font-weight-bold orange--text">Pay</p>
         <v-icon size="200" color="green darken-2"> mdi-cash-multiple </v-icon>
         <p class="pt-8 text-h1 font-weight-bold orange--text">Pai</p>
@@ -13,7 +13,7 @@
     <v-row class="d-flex flex-column justify-center align-center">
       <div class="align-self-center mb-5">
         <v-btn
-          href=""
+          href="/auth/signUp"
           min-width="400"
           class="pa-8 light-green darken-4 white--text text-h5"
           elevation="7"
@@ -24,7 +24,7 @@
       </div>
       <div class="align-self-center">
         <h4 class="d-flex justify-self-center">Already have an account? &nbsp;
-        <a href="" class="green--text text--darken-4">Sign In</a></h4>
+        <a href="/auth/signIn" class="green--text text--darken-4">Sign In</a></h4>
       </div>
     </v-row>
     <v-row align-content="center">
