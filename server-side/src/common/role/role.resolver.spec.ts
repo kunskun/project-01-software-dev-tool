@@ -1,5 +1,4 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { NotFoundError } from 'rxjs';
 import { RoleResolver } from './role.resolver';
 import { RoleService } from './role.service';
 
@@ -10,29 +9,26 @@ describe('RoleResolver', () => {
     roles: jest.fn(() => {
       return [
         {
-          id: 1,
+          id: '1',
           roleName: 'host'
         },{
-          id: 2,
+          id: '2',
           roleName: 'member'
         }
       ]
     }),
-    findHost: jest.fn((name) => {
+    findRoleByName: jest.fn((name) => {
       return{
-        id: 1,
-        roleName: 'host'
+        id: Date.now().toString(),
+        roleName: name
       }
     }),
-    findMember: jest.fn((name) => {
+    findRoleById: jest.fn((id) => {
       return{
-        id: 2,
-        roleName: 'member'
+        id: id,
+        roleName: Date.now().toString()
       }
     }),
-    tmpRole: jest.fn = () => {
-      throw new Error('Role not found')
-    }
   }
 
   beforeEach(async () => {
@@ -51,49 +47,41 @@ describe('RoleResolver', () => {
   });
 
   it('should get all role', async () => {
-    expect(mockRoleService.roles().length).toBe(2)
+    expect((await resolver.roles()).length).toBe(2)
 
-    expect(mockRoleService.roles()).toContainEqual({
-      id: expect.any(Number),
+    expect(await resolver.roles()).toContainEqual({
+      id: expect.any(String),
       roleName: 'host'
     })
 
-    expect(mockRoleService.roles()).toContainEqual({
-      id: expect.any(Number),
+    expect(await resolver.roles()).toContainEqual({
+      id: expect.any(String),
       roleName: 'member'
     })
+
+    expect(mockRoleService.roles).toHaveBeenCalled();
   });
 
-  it('should get only host by name', () => {
-    expect(mockRoleService.findHost('host')).toEqual({
-      id: expect.any(Number),
-      roleName: 'host'
+  it('should get role by name', () => {
+    const type:string = 'host'
+
+    expect(resolver.findRoleByName(type)).toEqual({
+      id: expect.any(String),
+      roleName: type
     })
+
+    expect(mockRoleService.findRoleByName).toHaveBeenCalled();
   });
 
-  it('should get only host by id', () => {
-    expect(mockRoleService.findHost('1')).toEqual({
-      id: 1,
+  it('should get role by id', () => {
+    const id:string = '12545' 
+
+    expect(resolver.findRoleById(id)).toEqual({
+      id: id,
       roleName: expect.any(String)
     })
-  });
 
-  it('should get only member by name', () => {
-    expect(mockRoleService.findMember('member')).toEqual({
-      id: expect.any(Number),
-      roleName: 'member'
-    })
-  });
-
-  it('should get only member by id', () => {
-    expect(mockRoleService.findMember('2')).toEqual({
-      id: 2,
-      roleName: expect.any(String)
-    })
-  });
-
-  it('should throw error', () => {
-    expect(mockRoleService.tmpRole).toThrow()
+    expect(mockRoleService.findRoleById).toHaveBeenCalled()
   });
 
 });
