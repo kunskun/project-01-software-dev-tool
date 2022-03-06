@@ -8,18 +8,24 @@ describe('RoleService', () => {
     const mockRoleService = {
         findAll: jest.fn().mockImplementation(() => Promise.resolve([
             {
-                id: Date.now(),
+                id: Date.now().toString(),
                 roleName: 'host'
             },{
-                id: Date.now(),
+                id: Date.now().toString(),
                 roleName: 'member'
             }
         ])),
         findById: jest.fn().mockImplementation((id) => 
-            Promise.resolve({id: id, roleName: Date.now().toString()})
+            Promise.resolve({
+                id: id, 
+                roleName: Date.now().toString()
+            })
         ),
         findByName: jest.fn().mockImplementation((name) => 
-            Promise.resolve({id: Date.now(), roleName: name})
+            Promise.resolve({
+                id: Date.now(), 
+                roleName: name
+            })
         )
     }
 
