@@ -29,6 +29,16 @@
       </v-menu>
     </v-app-bar>
     <v-row class="justify-center" style="margin-top: 1%">
+      <v-alert
+        type="success"
+        color="green lighten-2"
+        dark
+        :value="copyAlert"
+        transition="scale-transition"
+        style="position: absolute; z-index: 1;"
+      >
+        Copy code success
+      </v-alert>
       <v-card style="padding: 10px 20px 20px 20px">
         <v-row align="center" justify="center">
           <v-col cols="2">
@@ -59,7 +69,7 @@
                   :width="15"
                   :value="value"
                 >
-                  {{ value/20 }} / {{ family.service.serviceMaxMember }}
+                  {{ value/20 }} / {{ family && family.service.serviceMaxMember }}
                 </v-progress-circular>
               </v-col>
             </v-row>
@@ -172,14 +182,14 @@
             <span> ราคา/คน </span><br>
             <!-- count member ex. mockup have 6 member to divide -->
             <span style="font-size: 2rem;">
-              {{ ((family && family.service.serviceAmount)/(6)).toFixed(2) }} บาท
+              {{ ((family && family.service.serviceAmount)/(members.length)).toFixed(2) }} บาท
             </span>
           </v-col>
           <v-col cols="3">
             <span> จำนวนคนสูงสุด </span><br>
             <!-- count member ex. mockup have 6 member to count -->
             <span style="font-size: 2rem;">
-              6/{{ family && family.service.serviceMaxMember }} คน
+              {{ members.length }}/{{ family && family.service.serviceMaxMember }} คน
             </span>
           </v-col>
           <v-col cols="3" />
@@ -255,14 +265,16 @@
             </v-col>
           </template>
           <template v-else-if="isEdit">
-            <v-col cols="2"/>
+            <v-col cols="2" />
             <v-col cols="1">
               <v-btn
                 v-show="member.role !== 'host'"
                 style="width: 100%"
                 color="error"
                 @click="kickMemberModal(member)"
-              > Kick </v-btn>
+              >
+                Kick
+              </v-btn>
             </v-col>
           </template>
         </v-row>
@@ -297,6 +309,10 @@
 // eslint-disable-next-line import/no-named-as-default
 import gql from 'graphql-tag'
 
+export const state = () => ({
+  familyId: ''
+})
+
 export default {
   data: () => ({
     isEdit: false,
@@ -304,9 +320,10 @@ export default {
     familyName: 'Bruno Family',
     editFamiltName: '',
     kickModal: false,
-    viewAs: 'host',
+    viewAs: 'host', // change 'host' to 'member' to view as member role
     value: 40, // 2*20
     tmp: {},
+    copyAlert: false,
     rules: [
       value => !!value || 'Required.',
       value => (value && value.length >= 3) || 'Min 3 characters'
@@ -356,15 +373,6 @@ export default {
         phone: '0123456789',
         status: 'paid',
         image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png'
-      },
-      {
-        id: '6',
-        name: 'อนุชา',
-        role: 'member',
-        email: 'anucha@gmail.com',
-        phone: '0896547321',
-        status: 'not paid',
-        image: 'https://toppng.com/uploads/preview/man-icon-icon-11553432006itw46zhhk8.png'
       }
     ]
   }),
@@ -390,22 +398,32 @@ export default {
     },
     copyCode (code) {
       navigator.clipboard.writeText(code)
+      this.copyAlert = true
+      setTimeout(() => {
+        this.copyAlert = false
+      }, 2000)
     }
   },
   apollo: {
-    family: gql`query {
-      family(id: "62094f951d5751ba7b8db601"){
-        familyName
-        familyCode
-        service{
-          serviceName
-          serviceAmount
-          servicePeriod
-          serviceMaxMember
-          serviceImage
+    family: {
+      query: gql`query getFamily($id: String!){
+        family(id: $id){
+          familyName
+          familyCode
+          service{
+            serviceName
+            serviceAmount
+            servicePeriod
+            serviceMaxMember
+            serviceImage
+          }
         }
+      }`,
+      variables: {
+        // id: state.familyId
+        id: '622473c716437acc56799a00'
       }
-    }`
+    }
   }
 }
 </script>
