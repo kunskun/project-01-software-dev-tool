@@ -1,4 +1,15 @@
-# Project Software Dev Tools
+# Paypai
+## Run Project
+* Backend
+```
+$cd server-side
+$yarn start
+```
+* Frontend
+```
+$cd client-side
+$yarn run dev
+```
 
 ## Commit Message
 Type of uses : 
