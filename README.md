@@ -2,13 +2,13 @@
 ## Run Project
 * Backend
 ```
-$cd server-side
-$yarn start
+cd server-side
+yarn start
 ```
 * Frontend
 ```
-$cd client-side
-$yarn run dev
+cd client-side
+yarn run dev
 ```
 
 ## Commit Message
