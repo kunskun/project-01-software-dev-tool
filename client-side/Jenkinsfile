@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Pull code') {
             steps {
-                git branch: 'main', url: 'https://github.com/peetnawapol/project-01-software-dev-tool'
+                checkout scm
+                // git branch: 'staging', url: 'https://github.com/peetnawapol/project-01-software-dev-tool'
             }
         }
         stage('Download dependency') {
