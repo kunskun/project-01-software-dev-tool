@@ -5,7 +5,6 @@ pipeline {
         stage('Pull code') {
             steps {
                 checkout scm
-                // git branch: 'staging', url: 'https://github.com/peetnawapol/project-01-software-dev-tool'
             }
         }
         stage('Download dependency') {
@@ -21,6 +20,15 @@ pipeline {
         stage('Run Component test') {
             steps {
                 sh 'cd server-side && yarn run test:cov'
+            }
+        }
+        stage('Test Report'){
+            steps {
+                clover(cloverReportDir: 'server-side/coverage', cloverReportFileName: 'clover.xml',
+                    healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
+                    unhealthyTarget: [methodCoverage: 40, conditionalCoverage: 50, statementCoverage: 50],
+                    failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
+                )
             }
         }
         stage('Mongoose test') {
