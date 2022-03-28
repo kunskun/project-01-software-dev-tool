@@ -18,12 +18,21 @@ pipeline {
                 echo 'run unit test'
             }
         }
+        stage('Unit Test Report'){
+            steps {
+                clover(cloverReportDir: 'client-side/coverage', cloverReportFileName: 'clover.xml',
+                    healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
+                    unhealthyTarget: [methodCoverage: 40, conditionalCoverage: 50, statementCoverage: 50],
+                    failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
+                )
+            }
+        }
         stage('Run Component test') {
             steps {
                 echo 'run component test'
             }
         }
-        stage('Test Report'){
+        stage('Component Test Report'){
             steps {
                 clover(cloverReportDir: 'client-side/coverage', cloverReportFileName: 'clover.xml',
                     healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
@@ -44,12 +53,12 @@ pipeline {
         }
         stage('Deployment') {
             steps {
-                echo 'Deploy'
+                echo 'Deploy client-side'
             }
         }
         stage('Run E2E test') {
             steps {
-                echo 'E2E command'
+                echo 'E2E command Test'
             }
         }
     }
