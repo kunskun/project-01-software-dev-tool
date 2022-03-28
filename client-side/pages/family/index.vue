@@ -47,7 +47,7 @@
         <template v-if="families != null">
           <v-row v-for="family in families" :key="family.id">
             <nuxt-link style="text-decoration: none;" to="../family/detail">
-              <v-card style="background-color: #a2afbc; padding: 2% 0" @click="selectFamily(family.id)">
+              <v-card class="cardstyle" @click="selectFamily(family.id)">
                 <v-row>
                   <v-col cols="2" align="center" justify="center">
                     <v-img
@@ -87,13 +87,13 @@
                             />
                           </v-col>
                           <v-col cols="1">
-                            <v-btn v-if="member.status === 'paid'" color="success" style="width: 100%; font-size: 0.7rem;">
+                            <v-btn v-if="member.status === 'paid'" color="success" class="btn" >
                               Paid
                             </v-btn>
-                            <v-btn v-else-if="member.status === 'not paid'" color="error" style="width: 100%; font-size: 0.7rem;">
+                            <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
                               Not Paid
                             </v-btn>
-                            <v-btn v-else-if="member.status === 'waiting'" color="warning" style="width: 100%; font-size: 0.7rem;">
+                            <v-btn v-else-if="member.status === 'waiting'" color="warning" class="btn">
                               Waiting
                             </v-btn>
                           </v-col>
@@ -180,13 +180,13 @@
                             />
                           </v-col>
                           <v-col cols="1">
-                            <v-btn v-if="member.status === 'paid'" color="success" style="width: 100%; font-size: 0.7rem;">
+                            <v-btn v-if="member.status === 'paid'" color="success" class="btn">
                               Paid
                             </v-btn>
-                            <v-btn v-else-if="member.status === 'not paid'" color="error" style="width: 100%; font-size: 0.7rem;">
+                            <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
                               Not Paid
                             </v-btn>
-                            <v-btn v-else-if="member.status === 'waiting'" color="warning" style="width: 100%; font-size: 0.7rem;">
+                            <v-btn v-else-if="member.status === 'waiting'" color="warning" class="btn">
                               Waiting
                             </v-btn>
                           </v-col>
@@ -465,4 +465,12 @@ export default {
 .v-progress-circular {
     margin: 1rem;
   }
+.cardstyle {
+  background-color: #a2afbc;
+  padding: 2% 0
+}
+.btn{
+  width: 100%;
+  font-size: 0.7rem;
+}
 </style>

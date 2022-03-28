@@ -106,24 +106,14 @@
               <template v-if="!isEdit">
                 <v-btn
                   color="purple"
-                  class="title"
-                  style="
-                    border-radius: 15px;
-                    width: 100%;
-                    height: 40px;
-                    margin: 2%"
+                  class="title btn"
                   @click="toggleEditAndSave"
                 >
                   Edit
                 </v-btn>
                 <v-btn
                   color="black"
-                  class="title"
-                  style="
-                    border-radius: 15px;
-                    width: 100%;
-                    height: 40px;
-                    margin: 2%"
+                  class="title btn"
                 >
                   History
                 </v-btn>
@@ -131,12 +121,7 @@
               <v-btn
                 v-else
                 color="success"
-                class="title"
-                style="
-                  border-radius: 15px;
-                  width: 100%;
-                  height: 40px;
-                  margin: 2%"
+                class="title btn"
                 @click="toggleEditAndSave"
               >
                 Done
@@ -434,5 +419,11 @@ export default {
   }
   .v-progress-circular {
     margin: 1rem;
+  }
+  .btn{
+    border-radius: 15px;
+    width: 100%;
+    height: 40px;
+    margin: 2%
   }
 </style>
