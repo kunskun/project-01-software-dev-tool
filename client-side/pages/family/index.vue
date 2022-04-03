@@ -33,6 +33,7 @@
           </v-col>
           <v-col cols="1">
             <v-btn
+              class="create-button"
               style="
                 width: 100%;
                 background-color: blue;
@@ -45,7 +46,7 @@
           </v-col>
         </v-row>
         <template v-if="families != null">
-          <v-row v-for="family in families" :key="family.id">
+          <v-row v-for="family in families" :key="family.id" class="host-data">
             <nuxt-link style="text-decoration: none;" to="../family/detail">
               <v-card class="cardstyle" @click="selectFamily(family.id)">
                 <v-row>
@@ -87,7 +88,7 @@
                             />
                           </v-col>
                           <v-col cols="1">
-                            <v-btn v-if="member.status === 'paid'" color="success" class="btn" >
+                            <v-btn v-if="member.status === 'paid'" color="success" class="btn">
                               Paid
                             </v-btn>
                             <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
@@ -129,6 +130,7 @@
           </v-col>
           <v-col cols="1">
             <v-btn
+              class="join-button"
               style="width: 100%;
               background-color: purple;
               color: white;
@@ -140,7 +142,7 @@
           </v-col>
         </v-row>
         <template v-if="families != null">
-          <v-row v-for="family in memberFamily" :key="family.id">
+          <v-row v-for="family in memberFamily" :key="family.id" class="member-data">
             <nuxt-link style="text-decoration: none;" to="../family/detail">
               <v-card style="background-color: #a2afbc; padding: 3% 0">
                 <v-row>
@@ -260,6 +262,7 @@
           <v-card-actions>
             <v-spacer />
             <v-btn
+              class="close-create-btn"
               color="darken-1"
               text
               @click="createDialog = false"
@@ -269,7 +272,7 @@
             <NuxtLink style="text-decoration: none;" to="../family/detail">
               <v-btn
                 color="blue darken-1"
-                class="mr-4"
+                class="save-button-family mr-4"
                 type="submit"
                 text
                 @click="createFamily(), createDialog = false"
@@ -310,6 +313,7 @@
           <v-card-actions>
             <v-spacer />
             <v-btn
+              class="close-join-btn"
               color="darken-1"
               text
               @click="joinDialog = false"
@@ -319,7 +323,7 @@
             <NuxtLink style="text-decoration: none;" to="../family/detail">
               <v-btn
                 color="blue darken-1"
-                class="mr-4"
+                class="save-button-code mr-4"
                 type="submit"
                 text
                 @click="joinFamily(), joinDialog = false"
@@ -336,7 +340,7 @@
 <script>
 // eslint-disable-next-line import/no-named-as-default
 import gql from 'graphql-tag'
-import { state } from './detail.vue'
+// import { state } from './detail.vue'
 export default {
   data: () => ({
     value: 30,
@@ -429,7 +433,8 @@ export default {
           }
         })
       } catch (e) {
-        console.log(e)
+        // console.log(e)
+        return e
       }
     },
     joinFamily () {
@@ -449,10 +454,10 @@ export default {
       // } catch (e) {
       //   console.log(e)
       // }
-    },
-    selectFamily (id) {
-      state.familyId = id
     }
+    // selectFamily (id) {
+    //   state.familyId = id
+    // }
   }
 }
 </script>
