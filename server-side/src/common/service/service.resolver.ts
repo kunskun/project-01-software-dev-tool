@@ -39,9 +39,4 @@ export class ServiceResolver {
     return this.serviceService.delete(id)
   }
 
-  @Query(returns => String)
-  async hello() {
-    return 'hello'
-  }
-
 }

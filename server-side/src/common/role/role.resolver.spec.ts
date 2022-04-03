@@ -1,8 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { RoleResolver } from './role.resolver';
-import { RoleService } from './role.service';
 
-describe('RoleResolver', () => {
+describe('Unit test Role Resolver', () => {
   let resolver: RoleResolver;
 
   const mockRoleService = {

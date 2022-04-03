@@ -19,7 +19,7 @@ export class RoleService {
     }
 
     async findByName(name: string): Promise<RoleType[]> {
-        return await this.roleModel.find({roleName: new RegExp(name, 'i') })
+        return await this.roleModel.find({ roleName: new RegExp(name, 'i') })
     }
 
 }
