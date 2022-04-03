@@ -14,8 +14,7 @@ pipeline {
         }
         stage('Run Unit test') {
             steps {
-                // sh 'cd client-side && yarn run test'
-                echo 'run unit test'
+                sh 'cd client-side && yarn run test'
             }
         }
         stage('Unit Test Report'){
