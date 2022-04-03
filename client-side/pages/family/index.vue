@@ -45,85 +45,83 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row >
-          <template v-if="families != null">
-            <v-row class="host-data" v-for="family in families" :key="family.id">
-              <nuxt-link style="text-decoration: none;" to="../family/detail">
-                <v-card class="cardstyle" @click="selectFamily(family.id)">
-                  <v-row>
-                    <v-col cols="2" align="center" justify="center">
-                      <v-img
-                        style="width: 70%;"
-                        :src="family.service.serviceImage"
-                      />
-                      <v-text align="center" justify="center">
-                        <span>
-                          {{ family.familyName }}
-                        </span>
+        <template v-if="families != null">
+          <v-row v-for="family in families" :key="family.id" class="host-data">
+            <nuxt-link style="text-decoration: none;" to="../family/detail">
+              <v-card class="cardstyle" @click="selectFamily(family.id)">
+                <v-row>
+                  <v-col cols="2" align="center" justify="center">
+                    <v-img
+                      style="width: 70%;"
+                      :src="family.service.serviceImage"
+                    />
+                    <v-text align="center" justify="center">
+                      <span>
+                        {{ family.familyName }}
+                      </span>
+                    </v-text>
+                  </v-col>
+                  <v-col cols="2" align="center" justify="center">
+                    <v-progress-circular
+                      color="pink dark-2"
+                      :rotate="90"
+                      :size="6*15"
+                      :width="10"
+                      :value="value"
+                    >
+                      {{ value/15 }} / {{ family.service.serviceMaxMember }}
+                    </v-progress-circular>
+                  </v-col>
+                  <v-col cols="6" align="center" justify="center" style="padding: 2%;">
+                    <v-row align="center" justify="center">
+                      <v-text style="font-weight: bold;">
+                        Member
                       </v-text>
-                    </v-col>
-                    <v-col cols="2" align="center" justify="center">
-                      <v-progress-circular
-                        color="pink dark-2"
-                        :rotate="90"
-                        :size="6*15"
-                        :width="10"
-                        :value="value"
-                      >
-                        {{ value/15 }} / {{ family.service.serviceMaxMember }}
-                      </v-progress-circular>
-                    </v-col>
-                    <v-col cols="6" align="center" justify="center" style="padding: 2%;">
-                      <v-row align="center" justify="center">
-                        <v-text style="font-weight: bold;">
-                          Member
-                        </v-text>
-                      </v-row>
-                      <v-row>
-                        <v-col v-for="member in members" :key="member.id" cols="4">
-                          <v-row>
-                            <v-col cols="3">
-                              <v-img
-                                :src="member.image"
-                                style="width: 100%; border-radius: 50%;"
-                              />
-                            </v-col>
-                            <v-col cols="1">
-                              <v-btn v-if="member.status === 'paid'" color="success" class="btn">
-                                Paid
-                              </v-btn>
-                              <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
-                                Not Paid
-                              </v-btn>
-                              <v-btn v-else-if="member.status === 'waiting'" color="warning" class="btn">
-                                Waiting
-                              </v-btn>
-                            </v-col>
-                          </v-row>
-                        </v-col>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="2" align="center" justify="center">
-                      <v-btn style="margin:50px">
-                        >>>
-                      </v-btn>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </nuxt-link>
-              <v-col cols="3" />
-            </v-row>
-          </template>
-          <template v-else>
-            <v-row>
-              <v-col cols="12" class="d-flex justify-center">
-                <div class="font-weight-medium">
-                  Not Found
-                </div>
-              </v-col>
-            </v-row>
-          </template>
-        </v-row>
+                    </v-row>
+                    <v-row>
+                      <v-col v-for="member in members" :key="member.id" cols="4">
+                        <v-row>
+                          <v-col cols="3">
+                            <v-img
+                              :src="member.image"
+                              style="width: 100%; border-radius: 50%;"
+                            />
+                          </v-col>
+                          <v-col cols="1">
+                            <v-btn v-if="member.status === 'paid'" color="success" class="btn">
+                              Paid
+                            </v-btn>
+                            <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
+                              Not Paid
+                            </v-btn>
+                            <v-btn v-else-if="member.status === 'waiting'" color="warning" class="btn">
+                              Waiting
+                            </v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                  <v-col cols="2" align="center" justify="center">
+                    <v-btn style="margin:50px">
+                      >>>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </nuxt-link>
+            <v-col cols="3" />
+          </v-row>
+        </template>
+        <template v-else>
+          <v-row>
+            <v-col cols="12" class="d-flex justify-center">
+              <div class="font-weight-medium">
+                Not Found
+              </div>
+            </v-col>
+          </v-row>
+        </template>
         <v-row>
           <v-col cols="11">
             <v-card-text style="font-size: 1.5rem; font-weight: bold">
@@ -143,83 +141,81 @@
             </v-btn>
           </v-col>
         </v-row>
-        <v-row >
-          <template v-if="families != null">
-            <v-row class="member-data" v-for="family in memberFamily" :key="family.id">
-              <nuxt-link style="text-decoration: none;" to="../family/detail">
-                <v-card style="background-color: #a2afbc; padding: 3% 0">
-                  <v-row>
-                    <v-col cols="2">
-                      <v-img
-                        style="width: 70%; height: 50%; margin: 20px"
-                        :src="family.familyImage"
-                      />
-                      <v-text style="margin-left: 30px; text-align: center;">
-                        {{ family.familyName }}
+        <template v-if="families != null">
+          <v-row v-for="family in memberFamily" :key="family.id" class="member-data">
+            <nuxt-link style="text-decoration: none;" to="../family/detail">
+              <v-card style="background-color: #a2afbc; padding: 3% 0">
+                <v-row>
+                  <v-col cols="2">
+                    <v-img
+                      style="width: 70%; height: 50%; margin: 20px"
+                      :src="family.familyImage"
+                    />
+                    <v-text style="margin-left: 30px; text-align: center;">
+                      {{ family.familyName }}
+                    </v-text>
+                  </v-col>
+                  <v-col cols="2" align="center" justify="center">
+                    <v-progress-circular
+                      color="pink dark-2"
+                      :rotate="90"
+                      :size="6*15"
+                      :width="10"
+                      :value="value"
+                    >
+                      {{ value/15 }} / 6
+                    </v-progress-circular>
+                  </v-col>
+                  <v-col cols="6" align="center" justify="center" style="padding: 2%;">
+                    <v-row align="center" justify="center">
+                      <v-text style="font-weight: bold;">
+                        Member
                       </v-text>
-                    </v-col>
-                    <v-col cols="2" align="center" justify="center">
-                      <v-progress-circular
-                        color="pink dark-2"
-                        :rotate="90"
-                        :size="6*15"
-                        :width="10"
-                        :value="value"
-                      >
-                        {{ value/15 }} / 6
-                      </v-progress-circular>
-                    </v-col>
-                    <v-col cols="6" align="center" justify="center" style="padding: 2%;">
-                      <v-row align="center" justify="center">
-                        <v-text style="font-weight: bold;">
-                          Member
-                        </v-text>
-                      </v-row>
-                      <v-row>
-                        <v-col v-for="member in members" :key="member.id" cols="4">
-                          <v-row>
-                            <v-col cols="3">
-                              <v-img
-                                :src="member.image"
-                                style="width: 100%; border-radius: 50%;"
-                              />
-                            </v-col>
-                            <v-col cols="1">
-                              <v-btn v-if="member.status === 'paid'" color="success" class="btn">
-                                Paid
-                              </v-btn>
-                              <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
-                                Not Paid
-                              </v-btn>
-                              <v-btn v-else-if="member.status === 'waiting'" color="warning" class="btn">
-                                Waiting
-                              </v-btn>
-                            </v-col>
-                          </v-row>
-                        </v-col>
-                      </v-row>
-                    </v-col>
-                    <v-col cols="2" align="center" justify="center">
-                      <v-btn style="margin-top: 40%;">
-                        >>>
-                      </v-btn>
-                    </v-col>
-                  </v-row>
-                </v-card>
-              </nuxt-link>
-              <v-col cols="3" />
-            </v-row>
-          </template>
-          <template v-else>
-            <v-row>
-              <v-col cols="12" class="d-flex justify-center">
-                <div class="font-weight-medium">
-                  Not Found
-                </div>
-              </v-col>
-            </v-row>
-          </template>
-        </v-row>
+                    </v-row>
+                    <v-row>
+                      <v-col v-for="member in members" :key="member.id" cols="4">
+                        <v-row>
+                          <v-col cols="3">
+                            <v-img
+                              :src="member.image"
+                              style="width: 100%; border-radius: 50%;"
+                            />
+                          </v-col>
+                          <v-col cols="1">
+                            <v-btn v-if="member.status === 'paid'" color="success" class="btn">
+                              Paid
+                            </v-btn>
+                            <v-btn v-else-if="member.status === 'not paid'" color="error" class="btn">
+                              Not Paid
+                            </v-btn>
+                            <v-btn v-else-if="member.status === 'waiting'" color="warning" class="btn">
+                              Waiting
+                            </v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+                  </v-col>
+                  <v-col cols="2" align="center" justify="center">
+                    <v-btn style="margin-top: 40%;">
+                      >>>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-card>
+            </nuxt-link>
+            <v-col cols="3" />
+          </v-row>
+        </template>
+        <template v-else>
+          <v-row>
+            <v-col cols="12" class="d-flex justify-center">
+              <div class="font-weight-medium">
+                Not Found
+              </div>
+            </v-col>
+          </v-row>
+        </template>
       </v-card>
     </v-row>
     <!-- create family dialog -->
@@ -437,7 +433,8 @@ export default {
           }
         })
       } catch (e) {
-        console.log(e)
+        // console.log(e)
+        return e
       }
     },
     joinFamily () {
@@ -457,7 +454,7 @@ export default {
       // } catch (e) {
       //   console.log(e)
       // }
-    },
+    }
     // selectFamily (id) {
     //   state.familyId = id
     // }
