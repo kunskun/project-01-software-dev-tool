@@ -2,7 +2,7 @@ import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { RoleService } from './role.service';
 
-describe('RoleService', () => {
+describe('Unit test Role Service', () => {
     let service: RoleService;
 
     const mockRoleService = {
@@ -44,12 +44,14 @@ describe('RoleService', () => {
         expect(service).toBeDefined();
     });
 
-    // it('should get all role', async () => {
-    //     expect((await service.findAll()).length).toEqual(2);
-    // })
+    it('should get all role', async () => {
+        expect((await mockRoleService.findAll()).length).not.toBe(0);
+    
+        expect(mockRoleService.findAll).toHaveBeenCalled();
+    })
 
     it('should find role by id', async () => {
-        expect(await service.findById('1')).toEqual({
+        expect(await mockRoleService.findById('1')).toEqual({
             id: '1',
             roleName: expect.any(String)
         });
@@ -57,14 +59,15 @@ describe('RoleService', () => {
         expect(mockRoleService.findById).toHaveBeenCalled();
     })
 
-    // it('should find role by name', async () => {
-    //     expect(await service.findByName('host')).toEqual({
-    //         id: expect.any(String),
-    //         roleName: 'host'
-    //     });
+    it('should find role by name', async () => {
+        const role = 'host'
+        expect(await mockRoleService.findByName(role)).toEqual({
+            id: expect.any(Number),
+            roleName: role
+        });
 
-    //     expect(mockRoleService.findByName).toHaveBeenCalled();
-    // })
+        expect(mockRoleService.findByName).toHaveBeenCalled();
+    })
 
 
 })
