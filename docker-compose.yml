@@ -2,10 +2,12 @@ version: "3.8"
 
 services:
   client-side:
+    image: team05/frontend
     build: ./client-side
     ports:
       - "80:8080"
   server-side:
+    image: team05/backend
     build: ./server-side
     ports:
       - "5000:5000"
