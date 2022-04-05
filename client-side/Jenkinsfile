@@ -15,9 +15,32 @@ pipeline {
         stage('Run Unit test') {
             steps {
                 sh 'cd client-side && yarn run test'
+
+                publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./client-side/coverage/lcov-report",
+                        reportFiles: "index.html",
+                        reportName: 'Unit Test Coverage Report'
+                    ]
+
+                    publishHTML target: [
+                        allowMissing: false,
+                        alwaysLinkToLastBuild: false,
+                        keepAll: true,
+                        reportDir: "./client-side/coverage",
+                        reportFiles: "report.html",
+                        reportName: 'Unit Test Report'
+                    ]
             }
         }
-        stage('Unit Test Report'){
+        stage('Run Component test') {
+            steps {
+                echo 'run component test'
+            }
+        }
+        stage('Create Coverage Test Report'){
             steps {
                 clover(cloverReportDir: 'client-side/coverage', cloverReportFileName: 'clover.xml',
                     healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
@@ -26,20 +49,6 @@ pipeline {
                 )
             }
         }
-        stage('Run Component test') {
-            steps {
-                echo 'run component test'
-            }
-        }
-        // stage('Component Test Report'){
-        //     steps {
-        //         clover(cloverReportDir: 'client-side/coverage', cloverReportFileName: 'clover.xml',
-        //             healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
-        //             unhealthyTarget: [methodCoverage: 40, conditionalCoverage: 50, statementCoverage: 50],
-        //             failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
-        //         )
-        //     }
-        // }
         stage('Graphql test') {
             steps {
                 echo 'test graphql api'
