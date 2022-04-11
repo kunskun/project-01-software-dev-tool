@@ -305,7 +305,7 @@ export default {
     familyName: 'Bruno Family',
     editFamiltName: '',
     kickModal: false,
-    viewAs: 'host', // change 'host' to 'member' to view as member role
+    viewAs: 'member', // change 'host' to 'member' to view as member role
     value: 40, // 2*20
     tmp: {},
     copyAlert: false,
