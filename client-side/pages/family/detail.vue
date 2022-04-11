@@ -139,6 +139,9 @@
                   width: 100%;
                   height: 40px;
                   margin: 2%"
+                :to="url"
+                large
+                href="../family/paybill"
               >
                 Pay bill
               </v-btn>
