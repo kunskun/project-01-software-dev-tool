@@ -19,5 +19,21 @@
         </v-list>
       </v-menu>
     </v-app-bar>
+    <v-card style="padding: 10px 20px 20px 20px">
+      <div>
+        <v-progress-linear
+          v-model="power"
+          color="amber"
+          height="25"
+        ></v-progress-linear>
+      </div>
+    </v-card>
   </div>
 </template>
+<script>
+export default {
+  data: () => ({
+    power: 50
+  })
+}
+</script>
