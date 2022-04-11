@@ -21,16 +21,38 @@
     </v-app-bar>
     <v-card style="card">
       <v-row class="text-center" justify="center">
-        <v-col cols="12" md="3" class="align-center justify-center d-flex flex-row">
-          <div class="pa-7 secondary rounded-circle d-inline-block fontcircles">
+        <v-col
+          cols="12"
+          md="3"
+          class="align-center justify-center d-flex flex-row"
+        >
+          <div
+            class="
+              px-8
+              py-6
+              secondary
+              rounded-circle
+              d-inline-block
+              fontcircles
+            "
+          >
             1
           </div>
-            <v-progress-linear
-              color="red darken-2"
-              rounded
-              value="100"
-            ></v-progress-linear>
-            <div class="pa-7 secondary rounded-circle d-inline-block fontcircles">
+          <v-progress-linear
+            color="blue-grey lighten-2"
+            rounded
+            value="100"
+          ></v-progress-linear>
+          <div
+            class="
+              px-8
+              py-6
+              blue-grey lighten-2
+              rounded-circle
+              d-inline-block
+              fontcircles
+            "
+          >
             2
           </div>
         </v-col>
