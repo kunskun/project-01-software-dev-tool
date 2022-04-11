@@ -57,6 +57,7 @@
           </div>
         </v-col>
       </v-row>
+       <div class="text-center fontpay" justify="center">PAY</div>
     </v-card>
   </div>
 </template>
@@ -68,5 +69,9 @@
   color: white;
   font-size: 15px;
   font-weight: bold;
+}
+.fontpay{
+    font-weight: bold;
+    font-size: 50px;
 }
 </style>
