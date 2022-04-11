@@ -4,16 +4,12 @@
       <v-app-bar-nav-icon />
       <v-spacer />
       <v-btn icon>
-        <v-icon color="info">
-          mdi-account-circle
-        </v-icon>
+        <v-icon color="info"> mdi-account-circle </v-icon>
       </v-btn>
       <v-menu left bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon color="warning">
-              mdi-email
-            </v-icon>
+            <v-icon color="warning"> mdi-email </v-icon>
           </v-btn>
         </template>
         <v-list>
@@ -23,4 +19,5 @@
         </v-list>
       </v-menu>
     </v-app-bar>
+  </div>
 </template>
