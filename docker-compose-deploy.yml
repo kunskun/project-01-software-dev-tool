@@ -4,10 +4,6 @@ services:
   client-side:
     image: thanayut/team-05-frontend
     build: ./client-side
-    ports:
-      - "80:8080"
   server-side:
     image: thanayut/team-05-backend
     build: ./server-side
-    ports:
-      - "5000:5000"
