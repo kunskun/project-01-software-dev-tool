@@ -56,7 +56,6 @@ pipeline {
                     remote.allowAnyHosts = true
                     sshCommand remote: remote, command: "git clone https://github.com/peetnawapol/project-01-software-dev-tool"
                     sshCommand remote: remote, command: "cd project-01-software-dev-tool"
-                    sshCommand remote: remote, command: "docker-compose -f docker-compose-deploy.yml down -d server-side"
                     sshCommand remote: remote, command: "docker-compose -f docker-compose-build.yml build server-side"
                     sshCommand remote: remote, command: "docker-compose -f docker-compose-deploy.yml up -d server-side"
                     sshCommand remote: remote, command: "rm -r project-01-software-dev-tool"
