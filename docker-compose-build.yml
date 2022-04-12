@@ -1,8 +1,8 @@
 version: "3"
 services:
   client-side:
-    image: thanayut/team-05-frontend:1.0.0
+    image: thanayutks/team-05-frontend:1.0.0
     build: ./client-side
   server-side:
-    image: thanayut/team-05-backend:1.0.0
+    image: thanayutks/team-05-backend:1.0.0
     build: ./server-side
