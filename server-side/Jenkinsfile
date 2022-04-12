@@ -54,6 +54,7 @@ pipeline {
                     remote.user = 'root'
                     remote.password = 'xitgmLwmp12q'
                     remote.allowAnyHosts = true
+                    sshCommand remote: remote, command: "rm -r project-01-software-dev-tool"
                     sshCommand remote: remote, command: "git clone https://github.com/peetnawapol/project-01-software-dev-tool"
                     sshCommand remote: remote, command: "cd project-01-software-dev-tool"
                     sshCommand remote: remote, command: "docker-compose -f docker-compose-build.yml build server-side"
