@@ -15,29 +15,11 @@ pipeline {
         stage('Run Unit test') {
             steps {
                 sh 'cd server-side && yarn run test'
-
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./server-side/coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Unit Test Coverage Report'
-                    ]
-
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./server-side/coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Unit Test Report'
-                    ]
             }
         }
         stage('Run Component test') {
             steps {
-                sh 'cd server-side && yarn run test:cov'
+                sh 'run coverage test'
             }
         }
         stage('Create Coverage Test Report'){
@@ -47,6 +29,15 @@ pipeline {
                     unhealthyTarget: [methodCoverage: 40, conditionalCoverage: 50, statementCoverage: 50],
                     failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
                 )
+
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: "./server-side/coverage/lcov-report",
+                    reportFiles: "index.html",
+                    reportName: 'Unit Test Report'
+                ]
             }
         }
         stage('Mongoose test') {
@@ -54,14 +45,33 @@ pipeline {
                 echo 'test mongoose !'
             }
         }
-        stage('Build') {
-            steps {
-                sh 'cd server-side && yarn build'
-            }
-        }
         stage('Deployment') {
             steps {
-                echo 'Deploy server-side'
+                script{
+                    def remote = [:]
+                    remote.name = "root"
+                    remote.host = '159.223.45.216'
+                    remote.user = 'root'
+                    remote.password = 'xitgmLwmp12q'
+                    remote.allowAnyHosts = true
+                    sshCommand remote: remote, command: "git clone -b matching_post https://github.com/peetnawapol/project-01-software-dev-tool"
+                    sshCommand remote: remote, command: "docker-compose -f project-01-software-dev-tool/docker-compose-build.yml build server-side"
+                    sshCommand remote: remote, command: "docker-compose -f project-01-software-dev-tool/docker-compose-deploy.yml up -d server-side"
+                    sshCommand remote: remote, command: "rm -r project-01-software-dev-tool"
+
+                }
+            }
+            post{
+                failure{
+                    script{
+                        def testing = build job: "team-5-backend"
+                        sh '$testing.getNumber()'
+                    }
+                    withCredentials([gitUsernamePassword(credentialsId: 'backend-server', gitToolName: 'git-tool')]) {
+                    sh 'git tag -d ' + '1.0.'+ $testing.getNumber()
+                    }
+                        
+                }
             }
         }
         stage('Run E2E test') {
