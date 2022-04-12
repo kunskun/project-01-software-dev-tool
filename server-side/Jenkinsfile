@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Component test') {
             steps {
-                sh 'run coverage test'
+                echo 'run coverage test'
             }
         }
         stage('Create Coverage Test Report'){
