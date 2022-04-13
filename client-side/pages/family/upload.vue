@@ -55,4 +55,7 @@
 .button{
     margin: 5px;
 }
+.btn-right{
+    margin-left: 76%;
+}
 </style>
