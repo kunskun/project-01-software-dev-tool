@@ -47,7 +47,8 @@
             class="
               px-8
               py-6
-              blue-grey lighten-2
+              blue-grey
+              lighten-2
               rounded-circle
               d-inline-block
               fontcircles
@@ -57,7 +58,15 @@
           </div>
         </v-col>
       </v-row>
-       <div class="text-center fontpay" justify="center">PAY</div>
+      <div class="text-center fontpay" justify="center">PAY</div>
+      <div>
+        <img
+          class="qr"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
+          width="50%"
+          height="50%"
+        />
+      </div>
     </v-card>
   </div>
 </template>
@@ -70,8 +79,13 @@
   font-size: 15px;
   font-weight: bold;
 }
-.fontpay{
-    font-weight: bold;
-    font-size: 50px;
+.fontpay {
+  font-weight: bold;
+  font-size: 50px;
+}
+.qr {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
