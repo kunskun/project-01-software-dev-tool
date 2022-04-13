@@ -1,5 +1,6 @@
 <template>
- <v-card class="backgroud">
+
+    <v-card class="backgroud">
         <center><h1 class="pay">PAY</h1></center>
         <br>
         <div class="row">
@@ -78,5 +79,28 @@
     background-color: black;
     color: white;
     text-decoration: none;
+}
+#c1{
+    top: 100px;
+}
+#c1:hover{
+    background-color: rgb(114, 110, 110);
+    color: black;
+}
+#c2{
+    top: 300px;
+}
+.triangle{
+    width: 60px;
+    height: 60px;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    top: 240px;
+    clip-path: polygon(0 0, 0 100%, 100% 50%);
+    margin-left: 20px
+}
+.right{
+    min-height: 500px;
+    margin-top: 100px;
 }
 </style>
