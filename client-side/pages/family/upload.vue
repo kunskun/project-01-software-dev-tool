@@ -63,4 +63,20 @@
     width: 20px;
     height: 500px;
 }
+.circle{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-left: -20px;
+    position: relative;
+    justify-content: center;
+    display:flex;
+    align-items: center;
+    font-size: 25px;
+    font-weight: bold;
+    border: 10px solid black;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
 </style>
