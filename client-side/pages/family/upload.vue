@@ -58,4 +58,9 @@
 .btn-right{
     margin-left: 76%;
 }
+.line{
+    background-color: black;
+    width: 20px;
+    height: 500px;
+}
 </style>
