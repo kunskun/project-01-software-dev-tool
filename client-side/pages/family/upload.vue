@@ -1,5 +1,5 @@
 <template>
-    <v-card class="backgroud">
+<v-card class="backgroud">
         <center><h1 class="pay">PAY</h1></center>
         <br>
         <div class="row">
@@ -12,7 +12,17 @@
                     </div>
                 </center>
             </div>
+            <div class="col-lg-9 right">
+                <center><div class="upload">
+                    <label> <img src="../../static/upload.jpg" alt="accusamus beatae ad facilis cum similique qui sunt">
+                        <br><br>
+                    </label>
+                    <div>
+                    </div>
+                </div>
+                </center>
             </div>
+        </div>
         <v-col class="btn-right">
             <v-btn class="button" color ="primary" :to="url" large href="#">
               Back
