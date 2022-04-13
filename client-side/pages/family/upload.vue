@@ -42,4 +42,17 @@
   background-color: rgb(138, 132, 132);
   padding: 50px;
 }
+.pay{
+    background-color: rgb(88, 86, 86);
+    width: 20%;
+    border-radius: 10px;
+}
+.upload{
+    background-color: rgb(245, 237, 237);
+    justify-content:space-around;
+    padding: 20px;
+}
+.button{
+    margin: 5px;
+}
 </style>
