@@ -1,5 +1,5 @@
 <template>
-<v-card class="backgroud">
+ <v-card class="backgroud">
         <center><h1 class="pay">PAY</h1></center>
         <br>
         <div class="row">
@@ -16,8 +16,12 @@
                 <center><div class="upload">
                     <label> <img src="../../static/upload.jpg" alt="accusamus beatae ad facilis cum similique qui sunt">
                         <br><br>
+                        <input type="file" id="file" ref="file" v-on:change="Upload()"/>
                     </label>
                     <div>
+                        <v-btn class="button" color ="success" v-on:click="submitForm()">Upload
+                            <v-icon right dark>mdi-cloud-upload</v-icon>
+                        </v-btn>
                     </div>
                 </div>
                 </center>
