@@ -7,7 +7,7 @@
             <div class="col-lg-3">
                 <center>
                     <div class="line">
-                        <a class="circle" id="c1" @click="url" large href="#">1</a>
+                        <a class="circle" id="c1" @click="url" large href="../family/paybill">1</a>
                         <div class="circle" id="c2">2</div>
                         <div class="triangle"></div>
                     </div>
@@ -29,7 +29,7 @@
             </div>
         </div>
         <v-col class="btn-right">
-            <v-btn class="button" color ="primary" :to="url" large href="#">
+            <v-btn class="button" color ="primary" :to="url" large href="../family/paybill">
               Back
             </v-btn>
             <v-btn class="button" color ="info" :to="url" large href="../family">
