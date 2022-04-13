@@ -32,7 +32,7 @@
             <v-btn class="button" color ="primary" :to="url" large href="#">
               Back
             </v-btn>
-            <v-btn class="button" color ="secondary" :to="url" large href="../family">
+            <v-btn class="button" color ="info" :to="url" large href="../family">
               FINISH
             </v-btn>
         </v-col>
