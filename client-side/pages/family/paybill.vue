@@ -59,14 +59,24 @@
         </v-col>
       </v-row>
       <div class="text-center fontpay" justify="center">PAY</div>
-      <div>
-        <img
-          class="qr"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
-          width="50%"
-          height="50%"
-        />
-      </div>
+      <v-row class="text-center" justify="center">
+        <v-col
+          cols="12"
+          md="3"
+          class="align-center justify-center d-flex flex-row"
+        >
+          <div>
+            <img
+              class="qr"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
+              width="500px"
+              height="500px"
+            />
+          </div>
+          <button class="qrbutton">QRCODE</button>
+          <button class="accountbtn">ACCOUNT/PHONENUMBER</button>
+        </v-col>
+      </v-row>
     </v-card>
   </div>
 </template>
@@ -87,5 +97,27 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+.qrbutton {
+  background-color: #161c16;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.accountbtn {
+  background-color: #161c16;
+  border: none;
+  color: white;
+  padding: 18px 34px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 </style>
