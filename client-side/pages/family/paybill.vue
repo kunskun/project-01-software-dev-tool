@@ -73,8 +73,10 @@
               height="500px"
             />
           </div>
-          <button class="qrbutton">QRCODE</button>
-          <button class="accountbtn">ACCOUNT/PHONENUMBER</button>
+          <v-col cols="2">
+            <button class="qrbutton">QRCODE</button>
+            <button class="accountbtn">ACCOUNT/PHONENUMBER</button>
+          </v-col>
         </v-col>
       </v-row>
     </v-card>
