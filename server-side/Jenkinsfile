@@ -40,11 +40,6 @@ pipeline {
                 ]
             }
         }
-        stage('Mongoose test') {
-            steps {
-                echo 'test mongoose !'
-            }
-        }
         stage('Deployment') {
             steps {
                 script{
