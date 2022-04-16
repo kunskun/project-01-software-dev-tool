@@ -40,11 +40,6 @@ pipeline {
                 ]
             }
         }
-        stage('Mongoose test') {
-            steps {
-                echo 'test mongoose !'
-            }
-        }
         stage('Deployment') {
             steps {
                 script{
@@ -67,7 +62,7 @@ pipeline {
                         def testing = build job: "team-5-backend"
                         sh '$testing.getNumber()'
                     }
-                    withCredentials([gitUsernamePassword(credentialsId: 'backend-server', gitToolName: 'git-tool')]) {
+                    withCredentials([gitUsernamePassword(credentialsId: 'team-5-github', gitToolName: 'Default')]) {
                     sh 'git tag -d ' + '1.0.'+ $testing.getNumber()
                     }
                         

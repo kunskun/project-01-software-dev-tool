@@ -15,24 +15,6 @@ pipeline {
         stage('Run Unit test') {
             steps {
                 sh 'cd client-side && yarn run test'
-
-                publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./client-side/coverage/lcov-report",
-                        reportFiles: "index.html",
-                        reportName: 'Unit Test Coverage Report'
-                    ]
-
-                    publishHTML target: [
-                        allowMissing: false,
-                        alwaysLinkToLastBuild: false,
-                        keepAll: true,
-                        reportDir: "./client-side/coverage",
-                        reportFiles: "report.html",
-                        reportName: 'Unit Test Report'
-                    ]
             }
         }
         stage('Run Component test') {
@@ -40,33 +22,56 @@ pipeline {
                 echo 'run component test'
             }
         }
-        stage('Create Coverage Test Report'){
+        stage('Create Test Report'){
             steps {
                 clover(cloverReportDir: 'client-side/coverage', cloverReportFileName: 'clover.xml',
                     healthyTarget: [methodCoverage: 70, conditionalCoverage: 80, statementCoverage: 80],
                     unhealthyTarget: [methodCoverage: 40, conditionalCoverage: 50, statementCoverage: 50],
                     failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]
                 )
-            }
-        }
-        stage('Graphql test') {
-            steps {
-                echo 'test graphql api'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'cd client-side && yarn build'
+
+                publishHTML target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: "./client-side/coverage/lcov-report",
+                    reportFiles: "index.html",
+                    reportName: 'Unit Test Report'
+                ]
             }
         }
         stage('Deployment') {
             steps {
-                echo 'Deploy client-side'
+                script{
+                    def remote = [:]
+                    remote.name = "root"
+                    remote.host = '159.65.12.177'
+                    remote.user = 'root'
+                    remote.password = 'xitgmLwmp12q'
+                    remote.allowAnyHosts = true
+                    sshCommand remote: remote, command: "git clone https://github.com/peetnawapol/project-01-software-dev-tool"
+                    sshCommand remote: remote, command: "docker-compose -f project-01-software-dev-tool/docker-compose-build.yml build client-side"
+                    sshCommand remote: remote, command: "docker-compose -f project-01-software-dev-tool/docker-compose-deploy.yml down"
+                    sshCommand remote: remote, command: "docker-compose -f project-01-software-dev-tool/docker-compose-deploy.yml up -d client-side"
+                    sshCommand remote: remote, command: "rm -r project-01-software-dev-tool"
+                }
+            }
+            post{
+                failure{
+                    script{
+                        def testing = build job: "team-5-frontend"
+                        sh '$testing.getNumber()'
+                    }
+                    withCredentials([gitUsernamePassword(credentialsId: 'team-5-github', gitToolName: 'Default')]) {
+                        sh 'git tag -d ' + '1.0.'+ $testing.getNumber()
+                    }
+                        
+                }
             }
         }
         stage('Run E2E test') {
             steps {
-                echo 'E2E command Test'
+                echo 'E2E command test'
             }
         }
     }
