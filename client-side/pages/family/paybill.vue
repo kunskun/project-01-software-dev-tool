@@ -74,18 +74,16 @@
             />
           </div>
           <v-col cols="2">
-            <button class="qrbutton">QRCODE</button>
+            <button class="qrbutton" @click="qrcode">QRCODE</button>
             <button class="accountbtn">ACCOUNT/PHONENUMBER</button>
           </v-col>
         </v-col>
       </v-row>
       <v-row class="text-center" justify="center">
-        <v-col
-          cols="12"
-          md="3"
-          class="d-flex flex-row"
-        >
-          <button class="backbtn">Back To Family</button>
+        <v-col cols="12" md="3" class="d-flex flex-row">
+          <button class="backbtn" :to="url" large href="../family/detail">
+            Back To Family
+          </button>
           <button class="nextbtn">Next</button>
         </v-col>
       </v-row>
@@ -143,7 +141,7 @@
   margin: 4px 2px;
   cursor: pointer;
 }
-.nextbtn{
+.nextbtn {
   background-color: #54c5f9;
   border: none;
   color: white;
@@ -155,3 +153,12 @@
   cursor: pointer;
 }
 </style>
+<script>
+export default {
+  methods: {
+    qrcode () {
+      alert(' Alomost Finished Please Wait :) ')
+    }
+  }
+}
+</script>
