@@ -175,7 +175,7 @@
                   <v-col cols="4" style="margin: 3%;"> 
                     <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
                   </v-col>
-                  <v-col cols="4" style="margin-top: 5%"> 
+                  <v-col cols="4" style="margin-top: 5%"> <!-- this is detail for each member -->
                     <p>Member name: {{history.name}} </p>
                     <p>Email: {{history.email}} </p>
                     <p>Phone: {{history.phone}} </p>
