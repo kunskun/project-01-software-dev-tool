@@ -1,4 +1,5 @@
-version: "3"
+version: "3.8"
+
 services:
   client-side:
     image: thanayutks/team-05-frontend:1.0.0
