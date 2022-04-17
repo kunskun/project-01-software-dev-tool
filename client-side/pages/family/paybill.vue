@@ -62,28 +62,36 @@
       </v-row>
       <div class="text-center fontpay" justify="center">PAY</div>
       <v-row class="text-center align-center justify-center d-flex flex-row">
-          <v-col cols="4">
+          <v-col cols="3" v-if="selectQr">
             <img
               class="qr"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
-              width="500px"
-              height="500px"
+              width="100%"
+              height="100%"
             />
           </v-col>
-          <v-col cols="2" class="">
+          <v-col cols="3" class="d-flex align-start flex-column" v-else>
+            <h2 class="my-5 d-flex justify-start flex-column align-start">Account No.
+              <span class="spanText rouded-xl">NL45INGB8434248247</span>
+            </h2>
+            <h2 class="my-5 d-flex justify-start flex-column align-start">Phone No.
+              <span class="spanText rouded-xl">0123456789</span>
+            </h2>
+          </v-col>
+          <v-col cols="2">
             <v-btn
               class="qrbutton black"
-              @click="qrcode"
+              @click="qrcode, selectQr = true"
               width="100%"
             >
               QRCODE
             </v-btn>
             <v-btn
               class="accountbtn black"
-              @click="account"
+              @click="account, selectQr = false"
               width="100%"
             >
-              ACCOUNT/PHONENUMBER
+              ACCOUNT/PHONE NUMBER
             </v-btn>
           </v-col>
       </v-row>
@@ -169,9 +177,18 @@
 a{
   text-decoration: none;
 }
+.spanText{
+  color: white;
+  background: gray;
+  padding: 2% 3% 2% 3%;
+  margin-left: 2%;
+}
 </style>
 <script>
 export default {
+  data: () => ({
+    selectQr: true
+  }),
   methods: {
     qrcode () {
       alert(' Alomost Finished Please Wait :) ')
