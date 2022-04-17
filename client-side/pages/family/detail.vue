@@ -145,7 +145,7 @@
               >
                 Pay bill
               </v-btn>
-              <template>
+              <template> <!-- this is history path -->
                 <v-row justify="center">
                   <v-dialog
                     v-model="dialog"
