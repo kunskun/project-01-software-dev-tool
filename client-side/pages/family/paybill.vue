@@ -75,7 +75,7 @@
           </div>
           <v-col cols="2">
             <button class="qrbutton" @click="qrcode">QRCODE</button>
-            <button class="accountbtn">ACCOUNT/PHONENUMBER</button>
+            <button class="accountbtn" @click="account">ACCOUNT/PHONENUMBER</button>
           </v-col>
         </v-col>
       </v-row>
@@ -157,6 +157,9 @@
 export default {
   methods: {
     qrcode () {
+      alert(' Alomost Finished Please Wait :) ')
+    },
+    account () {
       alert(' Alomost Finished Please Wait :) ')
     }
   }
