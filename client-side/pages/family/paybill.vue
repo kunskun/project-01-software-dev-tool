@@ -81,7 +81,7 @@
       </v-row>
       <v-row class="text-center" justify="center">
         <v-col cols="12" md="3" class="d-flex flex-row">
-          <button class="backbtn" :to="url" large href="../family/detail">
+          <button class="backbtn" @click="$router.go(-1)">
             Back To Family
           </button>
           <button class="nextbtn">Next</button>
