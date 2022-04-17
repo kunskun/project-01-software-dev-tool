@@ -26,6 +26,7 @@
           md="3"
           class="align-center justify-center d-flex flex-row"
         >
+        <a href="./paybill">
           <div
             class="
               px-8
@@ -38,11 +39,13 @@
           >
             1
           </div>
+          </a>
           <v-progress-linear
             color="blue-grey lighten-2"
             rounded
             value="100"
           ></v-progress-linear>
+          <a href="./upload">
           <div
             class="
               px-8
@@ -56,6 +59,7 @@
           >
             2
           </div>
+          </a>
         </v-col>
       </v-row>
       <div class="text-center fontpay" justify="center">PAY</div>
