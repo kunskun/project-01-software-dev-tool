@@ -176,7 +176,7 @@
                     <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
                   </v-col>
                   <v-col cols="4" style="margin-top: 5%">
-                    <p>Member name: {{history.name}} </p>
+                    <p>Member name: {{history.name}} </p> <!-- this is p tag -->
                     <p>Email: {{history.email}} </p>
                     <p>Phone: {{history.phone}} </p>
                     <p>Method: {{history.bank}} ฿: {{history.total}}</p>
