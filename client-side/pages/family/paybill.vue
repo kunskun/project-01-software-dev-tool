@@ -73,10 +73,20 @@
               height="500px"
             />
           </div>
-          <v-col cols="2 ">
+          <v-col cols="2">
             <button class="qrbutton">QRCODE</button>
             <button class="accountbtn">ACCOUNT/PHONENUMBER</button>
           </v-col>
+        </v-col>
+      </v-row>
+      <v-row class="text-center" justify="center">
+        <v-col
+          cols="12"
+          md="3"
+          class="align-center justify-center d-flex flex-row"
+        >
+          <button class="backbtn">Back To Family</button>
+          <button class="nextbtn">Next</button>
         </v-col>
       </v-row>
     </v-card>
@@ -119,6 +129,28 @@
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.backbtn {
+  background-color: #f44a4a;
+  border: none;
+  color: white;
+  padding: 20px 35px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.nextbtn{
+  background-color: #54c5f9;
+  border: none;
+  color: white;
+  padding: 20px 35px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
 }
