@@ -171,7 +171,7 @@
                 <v-card-title class="text-h5">
                   Payment History
                 </v-card-title>
-                <v-row v-for="history in historys" :key="history.id">
+                <v-row v-for="history in historys" :key="history.id"> <!-- this is loop from history -->
                   <v-col cols="4" style="margin: 3%;">
                     <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
                   </v-col>
