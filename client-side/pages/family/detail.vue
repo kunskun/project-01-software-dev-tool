@@ -145,64 +145,56 @@
               >
                 Pay bill
               </v-btn>
+              <!-- history dialog -->
                 <v-row justify="center">
                   <v-dialog
                     v-model="dialog"
                     persistent
                     max-width="700"
                   >
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  color="black"
-                  class="title"
-                  v-bind="attrs"
-                  v-on="on"
-                  style="
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        color="black"
+                        class="title"
+                        v-bind="attrs"
+                        v-on="on"
+                        style="
                           border-radius: 15px;
                           width: 85%;
                           height: 40px;
                           margin: 10%"
-                >
-                  History
-                </v-btn>
-              </template>
-              <v-card>
-                <v-card-title class="text-h5">
-                  Payment History
-                </v-card-title>
-                <v-row v-for="history in historys" :key="history.id">
-                  <v-col cols="4" style="margin: 3%;"> 
-                    <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
-                  </v-col>
-                  <v-col cols="4" style="margin-top: 5%"> 
-                    <p>Member name: {{history.name}} </p>
-
-                <v-row v-for="history in historys" :key="history.id"> <!-- this is loop from history -->
-                  <v-col cols="4" style="margin: 3%;">
-                    <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
-                  </v-col>
-                  <v-col cols="4" style="margin-top: 5%">
-                    <p>Member name: {{history.name}} </p> <!-- this is p tag -->
-
-                    <p>Email: {{history.email}} </p>
-                    <p>Phone: {{history.phone}} </p>
-                    <p>Method: {{history.bank}} ฿:{{history.total}}</p>
-                  </v-col>
+                      >
+                        History
+                      </v-btn>
+                    </template>
+                    <v-card>
+                      <v-card-title class="text-h5">
+                        Payment History
+                      </v-card-title>
+                      <v-row v-for="history in historys" :key="history.id">
+                        <v-col cols="4" style="margin: 3%;">
+                          <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
+                        </v-col>
+                        <v-col cols="4" style="margin-top: 5%">
+                          <p>Member name: {{history.name}} </p>
+                          <p>Email: {{history.email}} </p>
+                          <p>Phone: {{history.phone}} </p>
+                          <p>Method: {{history.bank}} ฿:{{history.total}}</p>
+                        </v-col>
+                      </v-row>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                          color="gray"
+                          text
+                          @click="dialog = false"
+                        >
+                          close
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
                 </v-row>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    color="gray"
-                    text
-                    @click="dialog = false"
-                  >
-                    close
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </v-row>
-        </template>
             </v-col>
           </template>
         </v-row>
