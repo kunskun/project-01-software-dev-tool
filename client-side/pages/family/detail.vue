@@ -139,20 +139,70 @@
                   width: 100%;
                   height: 40px;
                   margin: 2%"
+                :to="url"
+                large
+                href="../family/paybill"
               >
                 Pay bill
               </v-btn>
-              <v-btn
-                color="black"
-                class="title"
-                style="
-                  border-radius: 15px;
-                  width: 100%;
-                  height: 40px;
-                  margin: 2%"
-              >
-                History
-              </v-btn>
+                <v-row justify="center">
+                  <v-dialog
+                    v-model="dialog"
+                    persistent
+                    max-width="700"
+                  >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  color="black"
+                  class="title"
+                  v-bind="attrs"
+                  v-on="on"
+                  style="
+                          border-radius: 15px;
+                          width: 85%;
+                          height: 40px;
+                          margin: 10%"
+                >
+                  History
+                </v-btn>
+              </template>
+              <v-card>
+                <v-card-title class="text-h5">
+                  Payment History
+                </v-card-title>
+                <v-row v-for="history in historys" :key="history.id">
+                  <v-col cols="4" style="margin: 3%;"> 
+                    <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
+                  </v-col>
+                  <v-col cols="4" style="margin-top: 5%"> 
+                    <p>Member name: {{history.name}} </p>
+
+                <v-row v-for="history in historys" :key="history.id"> <!-- this is loop from history -->
+                  <v-col cols="4" style="margin: 3%;">
+                    <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
+                  </v-col>
+                  <v-col cols="4" style="margin-top: 5%">
+                    <p>Member name: {{history.name}} </p> <!-- this is p tag -->
+
+                    <p>Email: {{history.email}} </p>
+                    <p>Phone: {{history.phone}} </p>
+                    <p>Method: {{history.bank}} ฿:{{history.total}}</p>
+                  </v-col>
+                </v-row>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn
+                    color="gray"
+                    text
+                    @click="dialog = false"
+                  >
+                    close
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-row>
+        </template>
             </v-col>
           </template>
         </v-row>
@@ -300,12 +350,13 @@ export const state = () => ({
 
 export default {
   data: () => ({
+    dialog: false,
     isEdit: false,
     serviceImage: 'https://cdn-icons-png.flaticon.com/512/1383/1383260.png',
     familyName: 'Bruno Family',
     editFamiltName: '',
     kickModal: false,
-    viewAs: 'host', // change 'host' to 'member' to view as member role
+    viewAs: 'member', // change 'host' to 'member' to view as member role
     value: 40, // 2*20
     tmp: {},
     copyAlert: false,
@@ -358,6 +409,31 @@ export default {
         phone: '0123456789',
         status: 'paid',
         image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png'
+      }
+    ],
+
+    historys: [
+      {
+        id: '1',
+        name: 'แพรไหม',
+        role: 'host',
+        email: 'preamai@gmail.com',
+        phone: '0123456789',
+        status: 'paid',
+        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
+        bank: 'ttb',
+        total: '83.80'
+      },
+      {
+        id: '5',
+        name: 'แพรไหม',
+        role: 'member',
+        email: 'preamai@gmail.com',
+        phone: '0123456789',
+        status: 'paid',
+        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
+        bank: 'ttb',
+        total: '83.80'
       }
     ]
   }),
