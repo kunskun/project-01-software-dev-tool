@@ -83,7 +83,7 @@
         <v-col
           cols="12"
           md="3"
-          class="align-center justify-center d-flex flex-row"
+          class="d-flex flex-row"
         >
           <button class="backbtn">Back To Family</button>
           <button class="nextbtn">Next</button>
