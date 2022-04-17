@@ -1,46 +1,97 @@
 <template>
-
-    <v-card class="backgroud">
-        <center><h1 class="pay">PAY</h1></center>
-        <br>
-        <div class="row">
-            <div class="col-lg-3">
-                <center>
-                    <div class="line">
-                        <a class="circle" id="c1" @click="url" large href="../family/paybill">1</a>
-                        <div class="circle" id="c2">2</div>
-                        <div class="triangle"></div>
-                    </div>
-                </center>
-            </div>
-            <div class="col-lg-9 right">
-                <center><div class="upload">
-                    <label> <img src="../../static/upload.jpg" alt="accusamus beatae ad facilis cum similique qui sunt">
-                        <br><br>
-                        <input type="file" id="file" ref="file" v-on:change="Upload()"/>
-                    </label>
-                    <div>
-                        <v-btn class="button" color ="success" v-on:click="submitForm()">Upload
-                            <v-icon right dark>mdi-cloud-upload</v-icon>
-                        </v-btn>
-                    </div>
-                </div>
-                </center>
-            </div>
-        </div>
-        <v-col class="btn-right">
-            <v-btn class="button" color ="primary" :to="url" large href="../family/paybill">
-              Back
+    <div>
+        <v-app-bar color="#F90716" dense dark>
+            <v-app-bar-nav-icon />
+            <v-spacer />
+            <v-btn icon>
+                <v-icon color="info"> mdi-account-circle </v-icon>
             </v-btn>
-            <v-btn class="button" color ="info" :to="url" large href="../family">
-              FINISH
-            </v-btn>
-        </v-col>
-    </v-card>
+            <v-menu left bottom>
+                <template #activator="{ on, attrs }">
+                    <v-btn icon v-bind="attrs" v-on="on">
+                        <v-icon color="warning"> mdi-email </v-icon>
+                    </v-btn>
+                </template>
+                <v-list>
+                    <v-list-item v-for="n in 5" :key="n" @click="() => {}">
+                        <v-list-item-title>Notifications {{ n }}</v-list-item-title>
+                    </v-list-item>
+                </v-list>
+            </v-menu>
+        </v-app-bar>
+        <v-card class="backgroud">
+            <v-row class="text-center" justify="center">
+                <v-col
+                    cols="12"
+                    md="3"
+                    class="align-center justify-center d-flex flex-row"
+                >
+                    <a href="./paybill">
+                        <div
+                        class="
+                            px-8
+                            py-6
+                            secondary
+                            rounded-circle
+                            d-inline-block
+                            fontcircles"
+                        >
+                        1
+                        </div>
+                    </a>
+                    <v-progress-linear
+                        color="secondary"
+                        rounded
+                        value="100"
+                    />
+                    <a href="./upload">
+                        <div
+                        class="
+                            px-8
+                            py-6
+                            secondary
+                            rounded-circle
+                            d-inline-block
+                            fontcircles"
+                        >
+                        2
+                        </div>
+                    </a>
+                </v-col>
+            </v-row>
+            <div class="text-center fontpay" justify="center">PAY</div>
+            <v-row class="row">
+                <v-col cols="12" class="text-center" >
+                    <div class="upload text-center">
+                        <div class="my-1">
+                            <img src="../../static/upload.jpg" alt="">
+                        </div>
+                        <div class="my-1">
+                            <input type="file" id="file" ref="file" @click="Upload(file)"/>
+                        </div>
+                        <div class="my-1">
+                            <v-btn class="button" color ="success" @click="submitForm()">
+                                Upload
+                                <v-icon right dark>mdi-cloud-upload</v-icon>
+                            </v-btn>
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+            <v-col class=" d-flex justify-end px-5">
+                <v-btn class="button" color="primary" :to="url" large href="./paybill">
+                    Back
+                </v-btn>
+                <v-btn class="button" color="info" :to="url" large href="./detail">
+                    FINISH
+                </v-btn>
+            </v-col>
+        </v-card>
+    </div>
 </template>
 <style scoped>
 .backgroud {
-  background-color: rgb(138, 132, 132);
+  background-color: white;
   padding: 50px;
 }
 .pay{
@@ -49,7 +100,7 @@
     border-radius: 10px;
 }
 .upload{
-    background-color: rgb(245, 237, 237);
+    background-color: white;
     justify-content:space-around;
     padding: 20px;
 }
@@ -103,4 +154,24 @@
     min-height: 500px;
     margin-top: 100px;
 }
+.fontpay {
+  font-weight: bold;
+  font-size: 50px;
+}
+a{
+    text-decoration: none;
+    color: white !important;
+}
 </style>
+<script>
+export default {
+  methods: {
+    Upload (file) {
+      return file
+    },
+    submitForm () {
+      alert(' Alomost Finished Please Wait :) ')
+    }
+  }
+}
+</script>
