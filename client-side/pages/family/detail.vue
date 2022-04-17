@@ -152,13 +152,13 @@
                     persistent
                     max-width="700"
                   >
-              <template v-slot:activator="{ on, attrs }">
-                <v-btn
-                  color="black"
-                  class="title"
-                  v-bind="attrs"
-                  v-on="on"
-                  style="
+                    <template v-slot:activator="{ on, attrs }">
+                      <v-btn
+                        color="black"
+                        class="title"
+                        v-bind="attrs"
+                        v-on="on"
+                        style="
                           border-radius: 15px;
                           width: 85%;
                           height: 40px;
@@ -181,21 +181,20 @@
                     <p>Phone: {{history.phone}} </p>
                     <p>Method: {{history.bank}} ฿:{{history.total}}</p>
                   </v-col>
+                      </v-row>
+                      <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn
+                          color="gray"
+                          text
+                          @click="dialog = false"
+                        >
+                          close
+                        </v-btn>
+                      </v-card-actions>
+                    </v-card>
+                  </v-dialog>
                 </v-row>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    color="gray"
-                    text
-                    @click="dialog = false"
-                  >
-                    close
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </v-row>
-        </template>
             </v-col>
           </template>
         </v-row>
