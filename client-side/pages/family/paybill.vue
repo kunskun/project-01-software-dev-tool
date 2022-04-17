@@ -19,72 +19,86 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-card style="card">
+    <v-card style="card" class="mt-3">
       <v-row class="text-center" justify="center">
         <v-col
           cols="12"
           md="3"
           class="align-center justify-center d-flex flex-row"
         >
-          <div
-            class="
-              px-8
-              py-6
-              secondary
-              rounded-circle
-              d-inline-block
-              fontcircles
-            "
-          >
-            1
-          </div>
+          <a href="./paybill">
+            <div
+              class="
+                px-8
+                py-6
+                secondary
+                rounded-circle
+                d-inline-block
+                fontcircles"
+            >
+              1
+            </div>
+          </a>
           <v-progress-linear
             color="blue-grey lighten-2"
             rounded
             value="100"
           ></v-progress-linear>
-          <div
-            class="
-              px-8
-              py-6
-              blue-grey
-              lighten-2
-              rounded-circle
-              d-inline-block
-              fontcircles
-            "
-          >
-            2
-          </div>
+          <a href="./upload">
+            <div
+              class="
+                px-8
+                py-6
+                blue-grey
+                lighten-2
+                rounded-circle
+                d-inline-block
+                fontcircles"
+            >
+              2
+            </div>
+          </a>
         </v-col>
       </v-row>
       <div class="text-center fontpay" justify="center">PAY</div>
-      <v-row class="text-center" justify="center">
-        <v-col
-          cols="12"
-          md="3"
-          class="align-center justify-center d-flex flex-row"
-        >
-          <div>
+      <v-row class="text-center align-center justify-center d-flex flex-row">
+          <v-col cols="4">
             <img
               class="qr"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
               width="500px"
               height="500px"
             />
-          </div>
-          <v-col cols="2">
-            <button class="qrbutton" @click="qrcode">QRCODE</button>
-            <button class="accountbtn" @click="account">ACCOUNT/PHONENUMBER</button>
           </v-col>
-        </v-col>
+          <v-col cols="2" class="">
+            <v-btn
+              class="qrbutton black"
+              @click="qrcode"
+              width="100%"
+            >
+              QRCODE
+            </v-btn>
+            <v-btn
+              class="accountbtn black"
+              @click="account"
+              width="100%"
+            >
+              ACCOUNT/PHONENUMBER
+            </v-btn>
+          </v-col>
       </v-row>
-      <v-row class="text-center" justify="center">
-        <v-col cols="12" md="3" class="d-flex flex-row">
-          <button class="backbtn" @click="$router.go(-1)">
-            Back To Family
-          </button>
-          <button class="nextbtn">Next</button>
+      <v-row class="text-center d-flex justify-end px-5">
+        <v-col cols="12" md="3" class="d-flex justify-end">
+          <a href="./detail">
+            <v-btn class="backbtn primary mx-1">
+              BACK
+            </v-btn>
+          </a>
+          <a href="./upload">
+            <v-btn class="nextbtn info mx-1">
+              NEXT
+            </v-btn>
+          </a>
         </v-col>
       </v-row>
     </v-card>
@@ -151,6 +165,9 @@
   font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
+}
+a{
+  text-decoration: none;
 }
 </style>
 <script>
