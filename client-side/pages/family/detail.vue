@@ -179,7 +179,7 @@
                     <p>Member name: {{history.name}} </p>
                     <p>Email: {{history.email}} </p>
                     <p>Phone: {{history.phone}} </p>
-                    <p>Method: {{history.bank}} ฿: {{history.total}}</p>
+                    <p>Method: {{history.bank}} ฿:{{history.total}}</p>
                   </v-col>
                 </v-row>
                 <v-card-actions>
