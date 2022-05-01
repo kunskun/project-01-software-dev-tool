@@ -356,28 +356,33 @@ export default {
     members: [
       {
         id: 1,
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122454.png',
         status: 'paid'
       },
       {
         id: 2,
-        image: 'https://toppng.com/uploads/preview/man-icon-icon-11553432006itw46zhhk8.png',
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122492.png',
         status: 'not paid'
       },
       {
         id: 3,
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
-        status: 'paid'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122445.png',
+        status: 'not paid'
       },
       {
         id: 4,
-        image: 'https://toppng.com/uploads/preview/man-icon-icon-11553432006itw46zhhk8.png',
-        status: 'paid'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122478.png',
+        status: 'not paid'
       },
       {
         id: 5,
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122481.png',
         status: 'paid'
+      },
+      {
+        id: 6,
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122448.png',
+        status: 'not paid'
       }
     ]
   }),

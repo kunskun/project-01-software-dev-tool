@@ -4,25 +4,17 @@
       <v-app-bar-nav-icon />
       <v-spacer />
       <v-btn icon>
-        <v-icon>
-          mdi-account-circle
-        </v-icon>
+        <v-icon> mdi-account-circle </v-icon>
       </v-btn>
       <v-menu left bottom>
         <template #activator="{ on, attrs }">
           <v-btn icon v-bind="attrs" v-on="on">
-            <v-icon>
-              mdi-email
-            </v-icon>
+            <v-icon> mdi-email </v-icon>
           </v-btn>
         </template>
 
         <v-list>
-          <v-list-item
-            v-for="n in 5"
-            :key="n"
-            @click="() => {}"
-          >
+          <v-list-item v-for="n in 5" :key="n" @click="() => {}">
             <v-list-item-title>Notifications {{ n }}</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -35,22 +27,27 @@
         dark
         :value="copyAlert"
         transition="scale-transition"
-        style="position: absolute; z-index: 1;"
+        style="position: absolute; z-index: 1"
       >
         Copy code success
       </v-alert>
       <v-card style="padding: 10px 20px 20px 20px">
         <v-row align="center" justify="center">
           <v-col cols="2">
-            <v-img style="width: 90%" :src="family && family.service.serviceImage" />
+            <v-img
+              style="width: 90%"
+              :src="family && family.service.serviceImage"
+            />
           </v-col>
           <v-col cols="6">
             <v-row>
               <v-col cols="8">
-                <v-card-text> {{ family && family.service.serviceName }} </v-card-text>
+                <v-card-text>
+                  {{ family && family.service.serviceName }}
+                </v-card-text>
                 <v-card-text
                   v-if="!isEdit"
-                  style="font-size: 2rem; font-weight: bold;"
+                  style="font-size: 2rem; font-weight: bold"
                 >
                   {{ family && family.familyName }}
                 </v-card-text>
@@ -65,11 +62,12 @@
                 <v-progress-circular
                   color="pink dark-2"
                   :rotate="90"
-                  :size="(family && family.service.serviceMaxMember)*20"
+                  :size="(family && family.service.serviceMaxMember) * 20"
                   :width="15"
                   :value="value"
                 >
-                  {{ value/20 }} / {{ family && family.service.serviceMaxMember }}
+                  {{ value / 20 }} /
+                  {{ family && family.service.serviceMaxMember }}
                 </v-progress-circular>
               </v-col>
             </v-row>
@@ -78,15 +76,16 @@
             <v-col v-if="!isEdit" cols="2">
               <div
                 style="
-                  background-color:#C5C5C5;
+                  background-color: #c5c5c5;
                   border-radius: 25px;
                   text-align: center;
                   height: 80px;
                   padding-top: 2%;
                   font-weight: bold;
-                  font-size: 1.5em"
+                  font-size: 1.5em;
+                "
               >
-                {{ family && family.familyCode }} <br>
+                {{ family && family.familyCode }} <br />
                 <v-btn
                   color="black"
                   class="title"
@@ -94,7 +93,8 @@
                     border-radius: 15px;
                     width: 100%;
                     height: 40px;
-                    margin-top: 2%"
+                    margin-top: 2%;
+                  "
                   @click="copyCode(family && family.familyCode)"
                 >
                   Copy Code
@@ -111,10 +111,7 @@
                 >
                   Edit
                 </v-btn>
-                <v-btn
-                  color="black"
-                  class="title btn"
-                >
+                <v-btn color="black" class="title btn" @click="dialog = true">
                   History
                 </v-btn>
               </template>
@@ -138,105 +135,92 @@
                   border-radius: 15px;
                   width: 100%;
                   height: 40px;
-                  margin: 2%"
+                  margin: 2%;
+                "
                 :to="url"
                 large
                 href="../family/paybill"
               >
                 Pay bill
               </v-btn>
-              <template>
-                <v-row justify="center">
-                  <v-dialog
-                    v-model="dialog"
-                    persistent
-                    max-width="700"
-                  >
-                    <template v-slot:activator="{ on, attrs }">
-                      <v-btn
-                        color="black"
-                        class="title"
-                        v-bind="attrs"
-                        v-on="on"
-                        style="
-                          border-radius: 15px;
-                          width: 85%;
-                          height: 40px;
-                          margin: 10%"
-                      >
-                        History
-                      </v-btn>
-                    </template>
-                    <v-card>
-                      <v-card-title class="text-h5">
-                        Payment History
-                      </v-card-title>
-                      <v-row v-for="history in historys" :key="history.id"> <!-- this is loop from history -->
-                        <v-col cols="4" style="margin: 3%;">
-                          <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
-                        </v-col>
-                        <v-col cols="4" style="margin-top: 5%">
-                          <p>Member name: {{history.name}} </p>
-                          <p>Email: {{history.email}} </p>
-                          <p>Phone: {{history.phone}} </p>
-                          <p>Method: {{history.bank}} ฿:{{history.total}}</p>
-                        </v-col>
-                      </v-row>
-                      <v-card-actions>
-                        <v-spacer/>
-                        <v-btn
-                          color="gray"
-                          text
-                          @click="dialog = false"
-                        >
-                          close
-                        </v-btn>
-                      </v-card-actions>
-                    </v-card>
-                  </v-dialog>
-                </v-row>
-              </template>
+              <v-btn color="black" class="title btn" @click="dialog = true">
+                History
+              </v-btn>
             </v-col>
           </template>
         </v-row>
+        <template>
+          <v-row justify="center">
+            <v-dialog v-model="dialog" persistent max-width="700">
+              <v-card>
+                <v-card-title class="text-h5"> Payment History </v-card-title>
+                <v-row v-for="history in historys" :key="history.id">
+                  <!-- this is loop from history -->
+                  <v-col cols="4" style="margin: 3%">
+                    <v-icon large style="font-size: 10rem">mdi-receipt</v-icon>
+                  </v-col>
+                  <v-col cols="4" style="margin-top: 5%">
+                    <p>Member name: {{ history.name }}</p>
+                    <p>Email: {{ history.email }}</p>
+                    <p>Phone: {{ history.phone }}</p>
+                    <p>Method: {{ history.bank }} ฿:{{ history.total }}</p>
+                  </v-col>
+                </v-row>
+                <v-card-actions>
+                  <v-spacer />
+                  <v-btn color="gray" text @click="dialog = false">
+                    close
+                  </v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-row>
+        </template>
         <v-row>
           <v-col cols="3">
-            <span> ราคา </span><br>
-            <span style="font-size: 2rem;">
+            <span> ราคา </span><br />
+            <span style="font-size: 2rem">
               {{ family && family.service.serviceAmount }} บาท
             </span>
           </v-col>
           <v-col cols="3">
-            <span> ราคา/คน </span><br>
+            <span> ราคา/คน </span><br />
             <!-- count member ex. mockup have 6 member to divide -->
-            <span style="font-size: 2rem;">
-              {{ ((family && family.service.serviceAmount)/(members.length)).toFixed(2) }} บาท
+            <span style="font-size: 2rem">
+              {{
+                (
+                  (family && family.service.serviceAmount) / members.length
+                ).toFixed(2)
+              }}
+              บาท
             </span>
           </v-col>
           <v-col cols="3">
-            <span> จำนวนคนสูงสุด </span><br>
+            <span> จำนวนคนสูงสุด </span><br />
             <!-- count member ex. mockup have 6 member to count -->
-            <span style="font-size: 2rem;">
-              {{ members.length }}/{{ family && family.service.serviceMaxMember }} คน
+            <span style="font-size: 2rem">
+              {{ members.length }}/{{
+                family && family.service.serviceMaxMember
+              }}
+              คน
             </span>
           </v-col>
           <v-col cols="3" />
         </v-row>
         <v-row>
-          <v-col cols="4" style="font-weight: bold">
-            MEMBER
-          </v-col>
-          <v-col cols="3" style="font-weight: bold">
-            EMAIL
-          </v-col>
-          <v-col cols="3" style="font-weight: bold">
-            PHONE
-          </v-col>
+          <v-col cols="4" style="font-weight: bold"> MEMBER </v-col>
+          <v-col cols="3" style="font-weight: bold"> EMAIL </v-col>
+          <v-col cols="3" style="font-weight: bold"> PHONE </v-col>
           <v-col cols="1" />
           <v-col cols="1" />
         </v-row>
         <!-- member 1-6 -->
-        <v-row v-for="member in members" :key="member.id" align="center" justify="center">
+        <v-row
+          v-for="member in members"
+          :key="member.id"
+          align="center"
+          justify="center"
+        >
           <v-col cols="4">
             <v-row align="center" justify="center">
               <v-col cols="4">
@@ -263,9 +247,7 @@
               >
                 Approve
               </v-btn>
-              <v-btn v-else depressed disabled>
-                Approve
-              </v-btn>
+              <v-btn v-else depressed disabled> Approve </v-btn>
             </v-col>
             <v-col v-else-if="viewAs === 'member'" cols="2" />
             <v-col cols="1">
@@ -321,9 +303,7 @@
           <v-divider />
           <v-card-actions>
             <v-spacer />
-            <v-btn text @click="kickModal = false">
-              Cancel
-            </v-btn>
+            <v-btn text @click="kickModal = false"> Cancel </v-btn>
             <v-btn color="primary" text @click="kickMember(tmp.id)">
               Confirm
             </v-btn>
@@ -365,7 +345,7 @@ export default {
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'paid',
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122454.png'
       },
       {
         id: '2',
@@ -374,7 +354,7 @@ export default {
         email: 'anucha@gmail.com',
         phone: '0896547321',
         status: 'waiting',
-        image: 'https://toppng.com/uploads/preview/man-icon-icon-11553432006itw46zhhk8.png'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122492.png'
       },
       {
         id: '3',
@@ -383,7 +363,7 @@ export default {
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'waiting',
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122445.png'
       },
       {
         id: '4',
@@ -392,16 +372,25 @@ export default {
         email: 'anucha@gmail.com',
         phone: '0896547321',
         status: 'not paid',
-        image: 'https://toppng.com/uploads/preview/man-icon-icon-11553432006itw46zhhk8.png'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122478.png'
       },
       {
         id: '5',
-        name: 'แพรไหม',
+        name: 'อนุชา',
         role: 'member',
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'paid',
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png'
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122481.png'
+      },
+      {
+        id: '6',
+        name: 'แพรไหม',
+        role: 'member',
+        email: 'preamai@gmail.com',
+        phone: '0123456789',
+        status: 'waiting',
+        image: 'https://cdn-icons-png.flaticon.com/512/122/122448.png'
       }
     ],
 
@@ -413,7 +402,8 @@ export default {
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'paid',
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
+        image:
+          'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
         bank: 'ttb',
         total: '83.80'
       },
@@ -424,7 +414,8 @@ export default {
         email: 'preamai@gmail.com',
         phone: '0123456789',
         status: 'paid',
-        image: 'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
+        image:
+          'https://www.pngitem.com/pimgs/m/74-749452_business-woman-woman-icon-hd-png-download.png',
         bank: 'ttb',
         total: '83.80'
       }
@@ -460,39 +451,41 @@ export default {
   },
   apollo: {
     family: {
-      query: gql`query getFamily($id: String!){
-        family(id: $id){
-          familyName
-          familyCode
-          service{
-            serviceName
-            serviceAmount
-            servicePeriod
-            serviceMaxMember
-            serviceImage
+      query: gql`
+        query getFamily($id: String!) {
+          family(id: $id) {
+            familyName
+            familyCode
+            service {
+              serviceName
+              serviceAmount
+              servicePeriod
+              serviceMaxMember
+              serviceImage
+            }
           }
         }
-      }`,
+      `,
       variables: {
         // id: state.familyId
-        id: '622473c716437acc56799a00'
+        id: '62094f951d5751ba7b8db601'
       }
     }
   }
 }
 </script>
 <style scoped>
-  .title{
-    color: white;
-    font-weight: bold;
-  }
-  .v-progress-circular {
-    margin: 1rem;
-  }
-  .btn{
-    border-radius: 15px;
-    width: 100%;
-    height: 40px;
-    margin: 2%
-  }
+.title {
+  color: white;
+  font-weight: bold;
+}
+.v-progress-circular {
+  margin: 1rem;
+}
+.btn {
+  border-radius: 15px;
+  width: 100%;
+  height: 40px;
+  margin: 2%;
+}
 </style>

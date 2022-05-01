@@ -69,12 +69,6 @@
                         <div class="my-1">
                             <input type="file" id="file" ref="file" @click="Upload(file)"/>
                         </div>
-                        <div class="my-1">
-                            <v-btn class="button" color ="success" @click="submitForm()">
-                                Upload
-                                <v-icon right dark>mdi-cloud-upload</v-icon>
-                            </v-btn>
-                        </div>
                     </div>
                 </v-col>
             </v-row>
@@ -168,9 +162,6 @@ export default {
   methods: {
     Upload (file) {
       return file
-    },
-    submitForm () {
-      alert(' Alomost Finished Please Wait :) ')
     }
   }
 }
