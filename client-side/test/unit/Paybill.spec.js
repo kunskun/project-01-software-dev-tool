@@ -26,17 +26,17 @@ describe("payment unit testing", () => {
     expect(wrapper.vm.$data.selectQr).toBe(true);
   });
 
-  test("is qrcode function be call when click QRCODE button", () => {
-    global.alert = jest.fn();
-    wrapper.find("v-btn.qrbutton").trigger("click");
-    expect(alert).toHaveBeenCalled();
-    expect(alert).toHaveBeenCalledWith(" Alomost Finished Please Wait :) ");
-  });
+  // test("is qrcode function be call when click QRCODE button", () => {
+  //   global.alert = jest.fn();
+  //   wrapper.find("v-btn.qrbutton").trigger("click");
+  //   expect(alert).toHaveBeenCalled();
+  //   expect(alert).toHaveBeenCalledWith(" Alomost Finished Please Wait :) ");
+  // });
 
-  test("is account function be call when click account button", () => {
-    global.alert = jest.fn();
-    wrapper.find("v-btn.accountbtn").trigger("click");
-    expect(alert).toHaveBeenCalled();
-    expect(alert).toHaveBeenCalledWith(" Alomost Finished Please Wait :) ");
-  });
+  // test("is account function be call when click account button", () => {
+  //   global.alert = jest.fn();
+  //   wrapper.find("v-btn.accountbtn").trigger("click");
+  //   expect(alert).toHaveBeenCalled();
+  //   expect(alert).toHaveBeenCalledWith(" Alomost Finished Please Wait :) ");
+  // });
 });
